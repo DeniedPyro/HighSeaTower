@@ -17,8 +17,8 @@ public class JavaFXScroll extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        int w = 300;
-        int h = 300;
+        int w = 350;
+        int h = 480;
 
         Pane root = new Pane();
         Scene scene = new Scene(root);
@@ -74,7 +74,7 @@ public class JavaFXScroll extends Application {
 
         timer.start();
 
-        primaryStage.setTitle("Scroll");
+        primaryStage.setTitle("High Sea Tower");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

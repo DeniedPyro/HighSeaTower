@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 public class Jeu {
 
     // Largeur, hauteur du niveau
-    private double width = 300, height = 300;
+    private double width = 350, height = 480;
 
     // Origine de la fenêtre
     private double fenetreX = 0, fenetreY = 0;
@@ -20,10 +20,10 @@ public class Jeu {
         rectangles = new ArrayList<>();
 
         // Crée 10 rectangles à des positions aléatoires dans les dimensions du niveau
-        for (int i = 0; i < 10; i++) {
-            rectangles.add(new Rectangle(Math.random() * width, Math.random() * height));
-        }
-    }
+       // for (int i = 0; i < 10; i++) {
+       //     rectangles.add(new Rectangle(Math.random() * width, Math.random() * height));
+      //  }
+    //}
 
     // Les flèches déplacent l'origine de la fenêtre
     public void gauche() {
