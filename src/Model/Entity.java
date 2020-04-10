@@ -1,3 +1,5 @@
+package Model;
+
 public abstract class Entity {
     protected double x, y;
     protected int hauteur,largeur;

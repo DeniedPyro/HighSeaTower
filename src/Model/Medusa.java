@@ -1,3 +1,7 @@
+package Model;
+
+import Model.Entity;
+
 public class Medusa extends Entity {
     String [] animation = {"../images/jellyfish1.png","../images/jellyfish2.png","../images/jellyfish3.png","../images/jellyfish4.png","../images/jellyfish5.png","../images/jellyfish6.png"};
     public Medusa(double x,double y){

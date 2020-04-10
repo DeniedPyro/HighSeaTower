@@ -1,5 +1,6 @@
 import java.util.ArrayList;
-import javafx.scene.canvas.GraphicsContext;
+
+import Model.Rectangle;
 import javafx.scene.paint.Color;
 
 /**
@@ -21,7 +22,7 @@ public class Jeu {
 
         // Crée 10 rectangles à des positions aléatoires dans les dimensions du niveau
        // for (int i = 0; i < 10; i++) {
-       //     rectangles.add(new Rectangle(Math.random() * width, Math.random() * height));
+       //     rectangles.add(new Model.Rectangle(Math.random() * width, Math.random() * height));
       //  }
     //}
 

@@ -1,4 +1,6 @@
 package Controller;
+import Model.GameModel;
+import View.GameView;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -8,13 +10,33 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class Controller {
+public class GameController {
+
+    public GameView view;
+    public GameModel model;
+    public Stage stage;
 
     public boolean mvLeft, mvRight, jump = false;
 
-    public Controller(Stage stage) {
+    public GameController(Stage stage) {
+        this.stage =stage;
 
-        stage.getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {
+        AnimationTimer timer = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                int dx = 0, dy = 0;
+
+                if (jump) System.out.println("Jump");
+                if (mvLeft) System.out.println("Moving Left");
+                if (mvRight) System.out.println("Moving Right");
+
+            }
+        };
+        timer.start();
+    }
+
+    private void  initControls(){
+        this.stage.getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
@@ -34,7 +56,7 @@ public class Controller {
             }
         });
 
-        stage.getScene().setOnKeyReleased(new EventHandler<KeyEvent>() {
+        this.stage.getScene().setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
@@ -53,18 +75,20 @@ public class Controller {
                 }
             }
         });
-        AnimationTimer timer = new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-                int dx = 0, dy = 0;
+    }
 
-                if (jump) System.out.println("Jump");
-                if (mvLeft) System.out.println("Moving Left");
-                if (mvRight) System.out.println("Moving Right");
+    public void buildView(Stage stage){
+        stage.setTitle("Phone Dial");
 
-            }
-        };
-        timer.start();
+        Gameview root = Gameview
+        this.view = root;
+        root.build();
+        root.delegate = this;
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+
+        stage.show();
     }
 
 
