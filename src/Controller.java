@@ -21,4 +21,12 @@ public class Controller {
     void jump() {
         jeu.jump();
     }
+
+    void moveLeft() {
+        jeu.moveLeft();
+    }
+
+    void moveRight() {
+        jeu.moveRight();
+    }
 }

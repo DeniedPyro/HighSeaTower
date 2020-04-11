@@ -20,6 +20,14 @@ public class Jeu {
         medusa.jump();
     }
 
+    public void moveLeft() {
+        medusa.moveLeft();
+    }
+
+    public void moveRight() {
+        medusa.moveRight();
+    }
+
     public void update(double dt) {
         /**
          * À chaque tour, on recalcule si le personnage se trouve parterre ou

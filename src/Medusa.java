@@ -16,7 +16,7 @@ public class Medusa extends Entity {
         this.largeur = 50;
         this.hauteur = 50;
         this.ay = 200;
-
+        this.ax = 200;
         this.vx = 100;
 
         // Chargement des images
@@ -89,6 +89,14 @@ public class Medusa extends Entity {
         if (parterre) {
             vy = -300;
         }
+    }
+
+    public void moveLeft(){
+        this.vx = -100;
+    }
+
+    public void moveRight(){
+        this.vx = 100;
     }
 
     @Override

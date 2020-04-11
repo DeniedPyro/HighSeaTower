@@ -33,6 +33,8 @@ public abstract class Entity {
         x = Math.max(x, 0);
         y = Math.min(y, HighSeaTower.HEIGHT - hauteur);
         y = Math.max(y, 0);
+
+
     }
 
     public abstract void draw(GraphicsContext context);

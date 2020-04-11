@@ -1,4 +1,3 @@
-
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -7,6 +6,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.application.Platform;
 
 public class HighSeaTower extends Application {
 
@@ -33,8 +33,19 @@ public class HighSeaTower extends Application {
         Controller controller = new Controller();
 
         scene.setOnKeyPressed((value) -> {
-            if (value.getCode() == KeyCode.SPACE) {
+            if (value.getCode() == KeyCode.SPACE || value.getCode() == KeyCode.UP  ) {
                 controller.jump();
+            }
+
+            if (value.getCode() == KeyCode.LEFT) {
+                controller.moveLeft();
+            }
+
+            if (value.getCode() == KeyCode.RIGHT) {
+                controller.moveRight();
+            }
+            if (value.getCode() == KeyCode.ESCAPE) {
+                Platform.exit();
             }
         });
 
