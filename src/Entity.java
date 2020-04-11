@@ -28,9 +28,9 @@ public abstract class Entity {
             vx *= -1;
             this.direction = !this.direction;
         }
-        if (y + hauteur > HighSeaTower.HEIGHT || y < 0) {
+        if (y + hauteur > HighSeaTower.HEIGHT+Jeu.windowY || y < 0) {
             vy *= -1;
-            this.direction = !this.direction;
+            //this.direction = !this.direction;
         }
         x = Math.min(x, HighSeaTower.WIDTH - largeur);
         x = Math.max(x, 0);
