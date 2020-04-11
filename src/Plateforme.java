@@ -17,4 +17,13 @@ public class Plateforme extends Entity {
         context.setFill(color);
         context.fillRect(x, y, largeur, hauteur);
     }
+
+    public void draw(GraphicsContext context,double windowY) {
+
+        double yAffiche = y - windowY;
+
+        context.setFill(color);
+        context.fillRect(x, yAffiche, largeur, hauteur);
+
+    }
 }
