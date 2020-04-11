@@ -2,10 +2,10 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public class Medusa extends Entity {
-
-    private Image[] frames;
+    private Image[] framesR;
+    private Image[] framesL;
     private Image image;
-    private double frameRate = 3; // 3 frame par sec
+    private double frameRate = 8; // 8 frame par sec
     private double tempsTotal = 0;
 
     private boolean parterre;
@@ -15,16 +15,28 @@ public class Medusa extends Entity {
         this.y = y;
         this.largeur = 50;
         this.hauteur = 50;
-        this.ay = 200;
-        this.ax = 200;
-        this.vx = 100;
+        this.ay = 1200;
+        this.ax = 0;
+        this.vx = 0;
 
         // Chargement des images
-        frames = new Image[]{
-                new Image("/run-1.png"),
-                new Image("/run-2.png")
+        framesR = new Image[]{
+                new Image("images/jellyfish1.png"),
+                new Image("images/jellyfish2.png"),
+                new Image("images/jellyfish3.png"),
+                new Image("images/jellyfish4.png"),
+                new Image("images/jellyfish5.png"),
+                new Image("images/jellyfish6.png"),
         };
-        image = frames[0];
+        framesL = new Image[]{
+                new Image("images/jellyfish1g.png"),
+                new Image("images/jellyfish2g.png"),
+                new Image("images/jellyfish3g.png"),
+                new Image("images/jellyfish4g.png"),
+                new Image("images/jellyfish5g.png"),
+                new Image("images/jellyfish6g.png"),
+        };
+        image = framesR[0];
     }
 
     @Override
@@ -35,8 +47,12 @@ public class Medusa extends Entity {
         // Mise à jour de l'image affichée
         tempsTotal += dt;
         int frame = (int) (tempsTotal * frameRate);
-
-        image = frames[frame % frames.length];
+        if(this.direction){
+            image = framesR[frame % framesR.length];
+        }
+        else{
+            image = framesL[frame % framesL.length];
+        }
     }
 
     public void testCollision(Plateforme other) {
@@ -81,22 +97,36 @@ public class Medusa extends Entity {
         this.parterre = parterre;
     }
 
+    public void lookingLeft(){
+        this.direction = false;
+    }
+
+    public void lookingRight(){
+        this.direction = true;
+    }
     /**
      * Le personnage peut seulement sauter s'il se trouve sur une
      * plateforme
      */
     public void jump() {
         if (parterre) {
-            vy = -300;
+            vy = -600;
         }
     }
 
     public void moveLeft(){
-        this.vx = -100;
+        this.ax = -1200;
+        lookingLeft();
     }
 
     public void moveRight(){
-        this.vx = 100;
+        this.ax = 1200;
+        lookingRight();
+    }
+
+    public void stop(){
+        this.vx = 0;
+        this.ax = 0;
     }
 
     @Override

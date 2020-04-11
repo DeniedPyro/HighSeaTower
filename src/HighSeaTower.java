@@ -48,6 +48,15 @@ public class HighSeaTower extends Application {
                 Platform.exit();
             }
         });
+        scene.setOnKeyReleased((value) -> {
+            if (value.getCode() == KeyCode.LEFT) {
+                controller.stop();
+            }
+
+            if (value.getCode() == KeyCode.RIGHT) {
+                controller.stop();
+            }
+        });
 
         AnimationTimer timer = new AnimationTimer() {
             private long lastTime = 0;
@@ -70,6 +79,7 @@ public class HighSeaTower extends Application {
         timer.start();
 
         primaryStage.setScene(scene);
+        primaryStage.setTitle("High Sea Tower");
         primaryStage.show();
     }
 }

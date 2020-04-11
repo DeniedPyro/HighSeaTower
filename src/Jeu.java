@@ -10,7 +10,7 @@ public class Jeu {
 
     public Jeu() {
         for (int i = 0; i < plateformes.length; i++) {
-            plateformes[i] = new Plateforme((double) i / plateformes.length * WIDTH, Math.random() * HEIGHT);
+            plateformes[i] = new Plateforme((double) i / plateformes.length * WIDTH, i * 100);
         }
 
         medusa = new Medusa(10, 10);
@@ -26,6 +26,10 @@ public class Jeu {
 
     public void moveRight() {
         medusa.moveRight();
+    }
+
+    public void stop(){
+        medusa.stop();
     }
 
     public void update(double dt) {

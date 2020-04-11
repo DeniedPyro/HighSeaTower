@@ -29,4 +29,7 @@ public class Controller {
     void moveRight() {
         jeu.moveRight();
     }
+    void stop() {
+        jeu.stop();
+    }
 }

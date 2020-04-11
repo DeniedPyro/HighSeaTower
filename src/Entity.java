@@ -5,6 +5,7 @@ public abstract class Entity {
 
     protected double largeur, hauteur;
     protected double x, y;
+    protected boolean direction = true; // Set to true if looking right.
 
     protected double vx, vy;
     protected double ax, ay;
@@ -25,9 +26,11 @@ public abstract class Entity {
         // Force à rester dans les bornes de l'écran
         if (x + largeur > HighSeaTower.WIDTH || x < 0) {
             vx *= -1;
+            this.direction = !this.direction;
         }
         if (y + hauteur > HighSeaTower.HEIGHT || y < 0) {
             vy *= -1;
+            this.direction = !this.direction;
         }
         x = Math.min(x, HighSeaTower.WIDTH - largeur);
         x = Math.max(x, 0);
