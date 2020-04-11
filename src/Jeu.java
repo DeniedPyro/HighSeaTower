@@ -1,63 +1,48 @@
-import java.util.ArrayList;
-
-import Model.Rectangle;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-/**
- *
- */
 public class Jeu {
 
-    // Largeur, hauteur du niveau
-    private double width = 350, height = 480;
+    public static final int WIDTH = 640, HEIGHT = 320;
 
-    // Origine de la fenêtre
-    private double fenetreX = 0, fenetreY = 0;
-
-    // Entités dans le jeu
-    private ArrayList<Rectangle> rectangles;
+    private Plateforme[] plateformes = new Plateforme[5];
+    private Medusa medusa;
 
     public Jeu() {
-        rectangles = new ArrayList<>();
+        for (int i = 0; i < plateformes.length; i++) {
+            plateformes[i] = new Plateforme((double) i / plateformes.length * WIDTH, Math.random() * HEIGHT);
+        }
 
-        // Crée 10 rectangles à des positions aléatoires dans les dimensions du niveau
-       // for (int i = 0; i < 10; i++) {
-       //     rectangles.add(new Model.Rectangle(Math.random() * width, Math.random() * height));
-      //  }
-    //}
-
-    // Les flèches déplacent l'origine de la fenêtre
-    public void gauche() {
-        fenetreX -= 10;
+        medusa = new Medusa(10, 10);
     }
 
-    public void droite() {
-        fenetreX += 10;
-    }
-
-    public void haut() {
-        fenetreY -= 10;
-    }
-
-    public void bas() {
-        fenetreY += 10;
+    public void jump() {
+        medusa.jump();
     }
 
     public void update(double dt) {
-        for (Rectangle r : rectangles) {
-            r.update(dt);
+        /**
+         * À chaque tour, on recalcule si le personnage se trouve parterre ou
+         * non
+         */
+        medusa.setParterre(false);
+
+        for (Plateforme p : plateformes) {
+            p.update(dt);
+            // Si le personnage se trouve sur une plateforme, ça sera défini ici
+            medusa.testCollision(p);
         }
+        medusa.update(dt);
     }
 
     public void draw(GraphicsContext context) {
-        for (Rectangle r : rectangles) {
-            /* Chaque entité doit être dessinée en considérant
-               l'origine de la fenêtre qui est affichée */
-            r.draw(context, fenetreX, fenetreY);
-        }
+        context.setFill(Color.CORNFLOWERBLUE);
+        context.fillRect(0, 0, WIDTH, HEIGHT);
 
-        context.setFill(Color.BLACK);
-        context.fillText("Utilisez les flèches pour déplacer la fenêtre", 5, 15);
-        context.fillText("Origine de la fenêtre: (" + fenetreX + ", " + fenetreY + ")", 5, 30);
+        medusa.draw(context);
+        for (Plateforme p : plateformes) {
+            p.draw(context);
+        }
     }
 }
+
