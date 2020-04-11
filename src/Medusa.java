@@ -9,6 +9,7 @@ public class Medusa extends Entity {
     private double tempsTotal = 0;
 
     private boolean parterre;
+    private boolean moved;
 
     public Medusa(double x, double y) {
         this.x = x;
@@ -37,6 +38,14 @@ public class Medusa extends Entity {
                 new Image("images/jellyfish6g.png"),
         };
         image = framesR[0];
+    }
+
+    public void setMoved(boolean moved) {
+        this.moved = moved;
+    }
+
+    public boolean hasMoved(){
+        return this.moved;
     }
 
     @Override
@@ -109,17 +118,26 @@ public class Medusa extends Entity {
      * plateforme
      */
     public void jump() {
+        if (!moved){
+            setMoved(true);
+        }
         if (parterre) {
             vy = -600;
         }
     }
 
     public void moveLeft(){
+        if (!moved){
+            setMoved(true);
+        }
         this.ax = -1200;
         lookingLeft();
     }
 
     public void moveRight(){
+        if (!moved){
+            setMoved(true);
+        }
         this.ax = 1200;
         lookingRight();
     }
