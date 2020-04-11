@@ -19,6 +19,7 @@ public class Medusa extends Entity {
         this.ay = 1200;
         this.ax = 0;
         this.vx = 0;
+        this.parterre = true;
 
         // Chargement des images
         framesR = new Image[]{
@@ -82,6 +83,7 @@ public class Medusa extends Entity {
             this.vy = 0;
             this.parterre = true;
         }
+
     }
 
     public boolean intersects(Plateforme other) {
@@ -118,16 +120,17 @@ public class Medusa extends Entity {
      * plateforme
      */
     public void jump() {
-        if (!moved){
+        if (!this.moved){
             setMoved(true);
         }
-        if (parterre) {
+        if (this.parterre) {
             vy = -600;
+            setParterre(false);
         }
     }
 
     public void moveLeft(){
-        if (!moved){
+        if (!this.moved){
             setMoved(true);
         }
         this.ax = -1200;
