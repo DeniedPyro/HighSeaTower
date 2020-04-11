@@ -18,7 +18,7 @@ public class Jeu {
             plateformes[i] = new Plateforme((double) i / plateformes.length * WIDTH, i * 100);
         }
 
-        medusa = new Medusa(10, 10);
+        medusa = new Medusa(WIDTH, HEIGHT);
     }
 
     public void jump() {
@@ -66,7 +66,7 @@ public class Jeu {
         context.setFill(Color.CORNFLOWERBLUE);
         context.fillRect(0, 0, WIDTH, HEIGHT);
 
-        medusa.draw(context);
+        medusa.draw(context,windowY);
         for (Plateforme p : plateformes) {
             p.draw(context, windowY);
         }

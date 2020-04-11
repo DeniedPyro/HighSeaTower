@@ -151,4 +151,12 @@ public class Medusa extends Entity {
     public void draw(GraphicsContext context) {
         context.drawImage(image, x, y, largeur, hauteur);
     }
+
+    public void draw(GraphicsContext context,double windowY) {
+
+        double yAffiche = this.y - windowY;
+
+        context.drawImage(image, x, yAffiche, largeur, hauteur);
+
+    }
 }
