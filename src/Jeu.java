@@ -7,6 +7,11 @@ public class Jeu {
 
     private Plateforme[] plateformes = new Plateforme[5];
     private Medusa medusa;
+    private double screenAy = 2;
+    private double screenVy = 50;
+
+    // Origine de la fenêtre
+    private double windowY = 0;
 
     public Jeu() {
         for (int i = 0; i < plateformes.length; i++) {
@@ -33,6 +38,16 @@ public class Jeu {
     }
 
     public void update(double dt) {
+        double vy,ay,y;
+
+        if (medusa.hasMoved()){
+
+            screenVy += dt * screenAy;
+            windowY -= dt * screenVy;
+
+        }
+
+
         /**
          * À chaque tour, on recalcule si le personnage se trouve parterre ou
          * non
@@ -53,8 +68,9 @@ public class Jeu {
 
         medusa.draw(context);
         for (Plateforme p : plateformes) {
-            p.draw(context);
+            p.draw(context, windowY);
         }
+
     }
 }
 
