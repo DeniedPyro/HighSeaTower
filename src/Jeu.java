@@ -11,7 +11,7 @@ public class Jeu {
     private double screenVy = 50;
 
     // Origine de la fenêtre
-    private double windowY = 0;
+    public static double windowY = 0;
 
     public Jeu() {
         for (int i = 0; i < plateformes.length; i++) {
@@ -52,7 +52,6 @@ public class Jeu {
          * À chaque tour, on recalcule si le personnage se trouve parterre ou
          * non
          */
-        medusa.setParterre(false);
 
         for (Plateforme p : plateformes) {
             p.update(dt);
