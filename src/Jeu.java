@@ -14,7 +14,7 @@ public class Jeu {
     private double screenVy = 50;
 
     // Origine de la fenêtre
-    public static double windowY = 0;
+    public static double windowY = 0.0;
 
     public Jeu() {
         for (int i = 0; i < 4; i++) {
