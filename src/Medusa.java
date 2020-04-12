@@ -2,8 +2,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public class Medusa extends Entity {
-    private Image[] framesR;
-    private Image[] framesL;
+    private Image[][] frames;
     private Image image;
     private double frameRate = 8; // 8 frame par sec
     private double tempsTotal = 0;
@@ -22,23 +21,22 @@ public class Medusa extends Entity {
         this.parterre = true;
 
         // Chargement des images
-        framesR = new Image[]{
+        frames = new Image[][]{{
                 new Image("images/jellyfish1.png"),
                 new Image("images/jellyfish2.png"),
                 new Image("images/jellyfish3.png"),
                 new Image("images/jellyfish4.png"),
                 new Image("images/jellyfish5.png"),
-                new Image("images/jellyfish6.png"),
-        };
-        framesL = new Image[]{
+                new Image("images/jellyfish6.png")
+        },{
                 new Image("images/jellyfish1g.png"),
                 new Image("images/jellyfish2g.png"),
                 new Image("images/jellyfish3g.png"),
                 new Image("images/jellyfish4g.png"),
                 new Image("images/jellyfish5g.png"),
-                new Image("images/jellyfish6g.png"),
-        };
-        image = framesR[0];
+                new Image("images/jellyfish6g.png")
+        }};
+        image = frames[0][0];
     }
 
     public void setMoved(boolean moved) {
@@ -58,11 +56,12 @@ public class Medusa extends Entity {
         tempsTotal += dt;
         int frame = (int) (tempsTotal * frameRate);
         if(this.direction){
-            image = framesR[frame % framesR.length];
+            image = frames[0][frame % frames[0].length];
         }
         else{
-            image = framesL[frame % framesL.length];
+            image = frames[1][frame % frames[1].length];
         }
+        y = Math.min(y, HighSeaTower.HEIGHT - hauteur + Jeu.windowY);
     }
 
     public void testCollision(Plateforme other) {

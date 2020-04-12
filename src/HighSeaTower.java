@@ -10,7 +10,7 @@ import javafx.application.Platform;
 
 public class HighSeaTower extends Application {
 
-    public static final int WIDTH = 640, HEIGHT = 320;
+    public static final int WIDTH = 350, HEIGHT = 480;
 
     /**
      * @param args the command line arguments
@@ -81,5 +81,6 @@ public class HighSeaTower extends Application {
         primaryStage.setScene(scene);
         primaryStage.setTitle("High Sea Tower");
         primaryStage.show();
+        primaryStage.setResizable(false);
     }
 }

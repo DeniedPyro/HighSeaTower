@@ -1,13 +1,16 @@
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
+import java.util.Random;
+
 public class Plateforme extends Entity {
 
     public Plateforme(double x, double y) {
+        Random widthR = new Random();
         this.x = x;
         this.y = y;
-        this.largeur = 100;
-        this.hauteur = 10;
+        this.largeur = widthR.nextInt(96) + 80;
+        this.hauteur = 15;
 
         this.color = Color.DARKORCHID;
     }
