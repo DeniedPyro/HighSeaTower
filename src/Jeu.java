@@ -42,7 +42,7 @@ public class Jeu {
 
     public void update(double dt) {
         double vy,ay,y;
-        boolean createPlatform = false;
+        
         if (medusa.hasMoved()){
 
             screenVy += dt * screenAy;
@@ -53,13 +53,10 @@ public class Jeu {
          * À chaque tour, on recalcule si le personnage se trouve parterre ou
          * non
          */
-        //if ((int)(-windowY) % 100 == 0 && windowY < 0){
-        //    createPlatform = true;
-        //}
-        //if (createPlatform) {
-        //    plateformes.add(new Plateforme(0,plateformes.get(plateformes.size() - 1).y));
-        //    createPlatform = !createPlatform;
-        //}
+        if ((int)(-windowY) % 100 == 0 && windowY < 0){
+            plateformes.add(new Plateforme(0,plateformes.get(plateformes.size() - 1).y-100));
+        }
+
         //if (plateformes.get(0).y < HEIGHT + windowY) {
         //    plateformes.remove(0);
         //}
