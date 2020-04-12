@@ -42,7 +42,6 @@ public class Jeu {
 
     public void update(double dt) {
         double vy,ay,y;
-        
         if (medusa.hasMoved()){
 
             screenVy += dt * screenAy;
@@ -57,14 +56,20 @@ public class Jeu {
             plateformes.add(new Plateforme(0,plateformes.get(plateformes.size() - 1).y-100));
         }
 
+
         //if (plateformes.get(0).y < HEIGHT + windowY) {
         //    plateformes.remove(0);
         //}
         for (Plateforme p : plateformes) {
-
-            p.update(dt);
             // Si le personnage se trouve sur une plateforme, ça sera défini ici
-            medusa.testCollision(p);
+//            if (in){
+                p.update(dt);
+                medusa.testCollision(p);
+//            }
+
+//            else{
+//            //on enleve la plateforme...
+//            }
         }
         medusa.update(dt);
     }
