@@ -3,6 +3,7 @@ import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Random;
 
 public class Jeu {
 
@@ -18,7 +19,11 @@ public class Jeu {
 
     public Jeu() {
         for (int i = 0; i < 4; i++) {
-            plateformes.add(new Plateforme(0, 380 - i * 100));
+            Random R = new Random();
+            Random posX = new Random();
+            int widthX = R.nextInt(81) + 95;
+            int X = posX.nextInt(WIDTH - widthX + 1);
+            plateformes.add(new Plateforme(widthX,X,365 - i * 115));
         }
 
         medusa = new Medusa(WIDTH/2-25, HEIGHT-50);
@@ -53,23 +58,24 @@ public class Jeu {
          * non
          */
         if ((int)(-windowY) % 100 == 0 && windowY < 0){
-            plateformes.add(new Plateforme(0,plateformes.get(plateformes.size() - 1).y-100));
+            Random R = new Random();
+            Random posX = new Random();
+            int widthX = R.nextInt(81) + 95;
+            int X = posX.nextInt(WIDTH - widthX + 1);
+            plateformes.add(new Plateforme(widthX,X,plateformes.get(plateformes.size() - 1).y-100));
         }
 
 
-        //if (plateformes.get(0).y < HEIGHT + windowY) {
-        //    plateformes.remove(0);
-        //}
         for (Plateforme p : plateformes) {
             // Si le personnage se trouve sur une plateforme, ça sera défini ici
-//            if (in){
-                p.update(dt);
+//          if (in){
+//              p.update(dt);
                 medusa.testCollision(p);
-//            }
+//          }
 
-//            else{
-//            //on enleve la plateforme...
-//            }
+//          else{
+//          //on enleve la plateforme...
+//          }
         }
         medusa.update(dt);
     }

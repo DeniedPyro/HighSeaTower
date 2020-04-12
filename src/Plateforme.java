@@ -5,11 +5,11 @@ import java.util.Random;
 
 public class Plateforme extends Entity {
 
-    public Plateforme(double x, double y) {
-        Random widthR = new Random();
+    public Plateforme(int largeur,int x,double y) {
+
         this.x = x;
         this.y = y;
-        this.largeur = widthR.nextInt(96) + 80;
+        this.largeur = largeur;
         this.hauteur = 15;
 
         this.color = Color.DARKORCHID;

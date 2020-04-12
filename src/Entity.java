@@ -28,7 +28,7 @@ public abstract class Entity {
             vx *= -1;
             this.direction = !this.direction;
         }
-        if (y + hauteur > HighSeaTower.HEIGHT + Jeu.windowY || y < Jeu.windowY) {
+        if (y < Jeu.windowY) {
             vy *= -1;
         }
         x = Math.min(x, HighSeaTower.WIDTH - largeur);

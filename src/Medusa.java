@@ -61,7 +61,6 @@ public class Medusa extends Entity {
         else{
             image = frames[1][frame % frames[1].length];
         }
-        y = Math.min(y, HighSeaTower.HEIGHT - hauteur + Jeu.windowY);
     }
 
     public void testCollision(Plateforme other) {
