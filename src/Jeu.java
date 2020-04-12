@@ -14,7 +14,7 @@ public class Jeu {
     private double screenAy = 2;
     private double screenVy = 50;
 
-    // Origine de la fenêtre
+    // Origine de la fenêtre☻
     public static double windowY = 0.0;
 
     public Jeu() {
@@ -61,7 +61,7 @@ public class Jeu {
             Random posX = new Random();
             int widthX = R.nextInt(81) + 95;
             int X = posX.nextInt(WIDTH - widthX + 1);
-            plateformes.add(new Plateforme(widthX,X,plateformes.get(plateformes.size() - 1).y-100));
+            plateformes.add(new Plateforme(widthX,X,plateformes.get(plateformes.size() - 1).y-115));
         }
 
 
@@ -91,7 +91,7 @@ public class Jeu {
                 p.remove();
 
             }
-            System.out.println(plateformes.toString());
+            //System.out.println(plateformes.toString());
         }
 
 //        for (Plateforme p : plateformes) {
