@@ -69,7 +69,6 @@ public class HighSeaTower extends Application {
                 }
 
                 double deltaTime = (now - lastTime) * 1e-9;
-
                 controller.update(deltaTime);
                 controller.draw(context);
 

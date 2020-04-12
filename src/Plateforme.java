@@ -23,7 +23,7 @@ public class Plateforme extends Entity {
 
     public void draw(GraphicsContext context,double windowY) {
 
-        double yAffiche = this.y - windowY;
+        double yAffiche = this.y - Jeu.windowY;
 
         context.setFill(color);
         context.fillRect(x, yAffiche, largeur, hauteur);

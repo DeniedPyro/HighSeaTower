@@ -46,7 +46,6 @@ public class Jeu {
     }
 
     public void update(double dt) {
-        double vy,ay,y;
         if (medusa.hasMoved()){
 
             screenVy += dt * screenAy;
@@ -57,7 +56,7 @@ public class Jeu {
          * À chaque tour, on recalcule si le personnage se trouve parterre ou
          * non
          */
-        if ((int)(-windowY) % 100 == 0 && windowY < 0){
+        if (plateformes.get(plateformes.size()-1).y -windowY > 100 && windowY < 0){
             Random R = new Random();
             Random posX = new Random();
             int widthX = R.nextInt(81) + 95;
@@ -68,26 +67,44 @@ public class Jeu {
 
         for (Plateforme p : plateformes) {
             // Si le personnage se trouve sur une plateforme, ça sera défini ici
-//          if (in){
-//              p.update(dt);
-                medusa.testCollision(p);
-//          }
-
-//          else{
-//          //on enleve la plateforme...
-//          }
+            //p.update(dt);
+            medusa.testCollision(p);
         }
         medusa.update(dt);
     }
 
     public void draw(GraphicsContext context) {
-        context.setFill(Color.CORNFLOWERBLUE);
+        context.setFill(Color.DARKBLUE);
         context.fillRect(0, 0, WIDTH, HEIGHT);
 
         medusa.draw(context,windowY);
-        for (Plateforme p : plateformes) {
-            p.draw(context, windowY);
+        Iterator<Plateforme> p = plateformes.iterator();
+
+        while(p.hasNext()) {
+            Plateforme obj = p.next();
+            if (-obj.y > -Jeu.windowY-HEIGHT){
+                obj.draw(context, Jeu.windowY);
+            }
+            else {
+                context.clearRect(obj.x,obj.y,obj.largeur,obj.hauteur);
+                //System.out.println("ool");
+                p.remove();
+
+            }
+            System.out.println(plateformes.toString());
         }
+
+//        for (Plateforme p : plateformes) {
+//            if (p.y > windowY){
+//                p.draw(context, windowY);
+//            }
+//            else {
+//                context.clearRect(p.x,p.y,p.largeur,p.hauteur);
+//                plateformes.remove(p);
+//                //System.out.println(plateformes.toString());
+//
+//            }
+//        }
 
     }
 }
