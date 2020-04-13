@@ -1,5 +1,6 @@
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.text.Text;
 
 
 public class Controller {
@@ -33,4 +34,10 @@ public class Controller {
     void stop() {
         jeu.stop();
     }
+
+    void updateDistance(Text distance){
+        distance.setText((int)Jeu.windowY + "m");
+    }
+
+
 }

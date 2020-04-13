@@ -109,21 +109,6 @@ public class Jeu {
             }
 
         }
-
-//        for (Platform p : platforms) {
-//            // Si le personnage se trouve sur une plateforme, ça sera défini ici
-//            //p.update(dt);
-//            if (medusa.collides(p)){
-//                Color green = Color.rgb(230, 221, 58) ;
-//                if(p.color.equals(green)){
-//                    p.giveEffect(this, medusa);
-//                }
-//                else {
-//                    p.giveEffect(medusa);
-//                }
-//            }
-//
-//        }
         medusa.update(dt);
     }
 

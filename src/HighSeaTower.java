@@ -5,6 +5,9 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.application.Platform;
 
@@ -26,7 +29,14 @@ public class HighSeaTower extends Application {
         Scene scene = new Scene(root, WIDTH, HEIGHT);
 
         Canvas canvas = new Canvas(WIDTH, HEIGHT);
-        root.getChildren().add(canvas);
+
+        Text distance = new Text("0 m");
+        distance.setFill(Color.rgb(255,255,255));
+        distance.setX((WIDTH/2)-40);
+        distance.setFont(Font.font(40));
+        distance.setY(40);
+
+        root.getChildren().addAll(canvas,distance);
 
         GraphicsContext context = canvas.getGraphicsContext2D();
 
@@ -70,6 +80,7 @@ public class HighSeaTower extends Application {
 
                 double deltaTime = (now - lastTime) * 1e-9;
                 controller.update(deltaTime);
+                controller.updateDistance(distance);
                 controller.draw(context);
 
                 lastTime = now;
