@@ -31,7 +31,9 @@ public class PlateformeSimple extends Platform {
 
     @Override
     public void giveEffect(Jeu j , Medusa m){
-        m.vy = 0;
+        if (m.getParterre()) {
+            m.vy = 0;
+        }
     }
 
 }
