@@ -27,5 +27,16 @@ public class PlateformeRebond extends Platform {
             context.fillRect(x, yAffiche, largeur, hauteur);
 
         }
+
+    public void giveFffect(Medusa m){
+        double v = m.vy *1.5;
+
+        if (v < 100){
+            m.y = -100;
+        }
+        else {
+            m.y = -v;
+        }
+    }
 }
 

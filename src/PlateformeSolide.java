@@ -19,7 +19,4 @@ public class PlateformeSolide extends Platform{
         context.fillRect(x, y, largeur, hauteur);
     }
 
-    public void giveEffect(Medusa m){
-
-    }
 }

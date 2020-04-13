@@ -9,7 +9,6 @@ public class PlateformeAccelere extends Platform {
         this.y = y;
         this.largeur = largeur;
         this.hauteur = 15;
-
         this.color = Color.rgb(230, 221, 58) ;
     }
 
@@ -25,11 +24,10 @@ public class PlateformeAccelere extends Platform {
 
         context.setFill(color);
         context.fillRect(x, yAffiche, largeur, hauteur);
-
     }
 
     public void giveFffect(Jeu jeu){
-
+        jeu.setScreenVy(jeu.getScreenVy()*3);
     }
 
 
