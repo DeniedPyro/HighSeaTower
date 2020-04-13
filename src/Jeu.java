@@ -9,7 +9,7 @@ public class Jeu {
 
     public static final int WIDTH = 350, HEIGHT = 480;
 
-    private ArrayList<Platform> plateformeSimples = new ArrayList<Platform>();
+    private ArrayList<Platform> platforms = new ArrayList<Platform>();
     private Medusa medusa;
     private double screenAy = 2;
     private double screenVy = 50;
@@ -19,14 +19,45 @@ public class Jeu {
 
     public Jeu() {
         for (int i = 0; i < 4; i++) {
-            Random R = new Random();
-            Random posX = new Random();
-            int widthX = R.nextInt(81) + 95;
-            int X = posX.nextInt(WIDTH - widthX + 1);
-            plateformeSimples.add(new PlateformeSimple(widthX,X,365 - i * 115));
+            platforms.add(generatePlatform(365 - i * 115));
         }
 
         medusa = new Medusa(WIDTH/2-25, HEIGHT-50);
+    }
+
+    private Platform generatePlatform(int y){
+        Random R = new Random();
+        int width = R.nextInt(81) + 95;
+        int x = R.nextInt(WIDTH - width + 1);
+
+        int choice = R.nextInt(100)+1;
+
+        if (choice <=65){
+            return new PlateformeSimple(width,x,y);
+        }
+
+        else if (choice > 65 & choice <= 85){
+            return new PlateformeRebond(width,x,y);
+        }
+
+        else if (choice > 85 & choice <= 95){
+            return new PlateformeAccelere(width,x,y);
+
+        }
+
+        else if (choice > 95 & choice <= 30){
+           Platform lastPlaform = platforms.get(platforms.size()-1);
+           Color color = Color.rgb(184, 15, 36);
+            if (lastPlaform.color.equals(color)){
+                return new PlateformeSolide(width,x,y);
+            }
+        else{
+            this.generatePlatform(y);
+            }
+
+        }
+
+        return null;
     }
 
     public void jump() {
@@ -65,16 +96,13 @@ public class Jeu {
          * À chaque tour, on recalcule si le personnage se trouve parterre ou
          * non
          */
-        if (plateformeSimples.get(plateformeSimples.size()-1).y -windowY > 100 && windowY < 0){
-            Random R = new Random();
-            Random posX = new Random();
-            int widthX = R.nextInt(81) + 95;
-            int X = posX.nextInt(WIDTH - widthX + 1);
-            plateformeSimples.add(new PlateformeSimple(widthX,X, plateformeSimples.get(plateformeSimples.size() - 1).y-115));
+        if (platforms.get(platforms.size()-1).y -windowY > 100 && windowY < 0){
+            Platform p = this.generatePlatform((int) platforms.get(platforms.size() - 1).y-115);
+            platforms.add(p);
         }
 
 
-        for (Platform p : plateformeSimples) {
+        for (Platform p : platforms) {
             // Si le personnage se trouve sur une plateforme, ça sera défini ici
             //p.update(dt);
             medusa.testCollision(p);
@@ -87,7 +115,7 @@ public class Jeu {
         context.fillRect(0, 0, WIDTH, HEIGHT);
 
         medusa.draw(context,windowY);
-        Iterator<Platform> p = plateformeSimples.iterator();
+        Iterator<Platform> p = platforms.iterator();
 
         while(p.hasNext()) {
             Platform obj = p.next();
