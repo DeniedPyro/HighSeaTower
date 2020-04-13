@@ -18,4 +18,13 @@ class Platform extends Entity {
     }
 
 
+    public void giveEffect(Jeu j , Medusa m){
+        ;
+    }
+
+    public void cancelEffect(Jeu j , Medusa m){
+        ;
+    }
+
+
 }

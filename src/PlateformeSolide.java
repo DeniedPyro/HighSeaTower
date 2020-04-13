@@ -19,4 +19,16 @@ public class PlateformeSolide extends Platform{
         context.fillRect(x, y, largeur, hauteur);
     }
 
+    @Override
+    public void giveEffect(Jeu j , Medusa m){
+        System.out.println(m.vy);
+        if (m.vy < 0){
+            m.vy = 0;
+            m.pushDown(this);
+        }
+        else {
+            m.pushOut(this);
+        }
+    }
+
 }

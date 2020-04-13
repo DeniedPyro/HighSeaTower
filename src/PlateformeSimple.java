@@ -27,10 +27,6 @@ public class PlateformeSimple extends Platform {
 
         context.setFill(color);
         context.fillRect(x, yAffiche, largeur, hauteur);
-
     }
 
-    public void giveEffect(Medusa m){
-
-    }
 }

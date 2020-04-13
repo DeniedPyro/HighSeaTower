@@ -30,6 +30,8 @@ public class Jeu {
         int x = R.nextInt(WIDTH - width + 1);
 
         int choice = R.nextInt(100)+1;
+        //to debug red platforms
+        //if(true) return new PlateformeAccelere(width,x,y);
 
         if (choice <=65){
             return new PlateformeSimple(width,x,y);
@@ -46,15 +48,12 @@ public class Jeu {
         else{
             Platform lastPlatform = platforms.get(platforms.size()-1);
             Color color = Color.rgb(184, 15, 36);
-            if (lastPlatform.color.equals(color)){
-                this.generatePlatform(y);
-            }
-            else{
+            if (lastPlatform.color.equals(color)) {
                 return new PlateformeSolide(width,x,y);
             }
         }
 
-        return null;
+        return this.generatePlatform(y);
     }
 
     public void jump() {
@@ -93,17 +92,38 @@ public class Jeu {
          * À chaque tour, on recalcule si le personnage se trouve parterre ou
          * non
          */
-        if (platforms.get(platforms.size()-1).y -windowY > 100 && windowY < 0){
+        if (platforms.get(platforms.size()-1).y -windowY > 110 && windowY < 0){
             Platform p = this.generatePlatform((int) platforms.get(platforms.size() - 1).y-110);
             platforms.add(p);
         }
 
+        Iterator<Platform> platformIterator = platforms.iterator();
 
-        for (Platform p : platforms) {
-            // Si le personnage se trouve sur une plateforme, ça sera défini ici
-            //p.update(dt);
-            medusa.testCollision(p);
+        while(platformIterator.hasNext()){
+            Platform p = platformIterator.next();
+            if (medusa.collides(p)){
+                p.giveEffect(this,medusa);
+                }
+            else {
+                p.cancelEffect(this,medusa);
+            }
+
         }
+
+//        for (Platform p : platforms) {
+//            // Si le personnage se trouve sur une plateforme, ça sera défini ici
+//            //p.update(dt);
+//            if (medusa.collides(p)){
+//                Color green = Color.rgb(230, 221, 58) ;
+//                if(p.color.equals(green)){
+//                    p.giveEffect(this, medusa);
+//                }
+//                else {
+//                    p.giveEffect(medusa);
+//                }
+//            }
+//
+//        }
         medusa.update(dt);
     }
 

@@ -1,5 +1,7 @@
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
+import java.awt.*;
 
 public class Medusa extends Entity {
     private Image[][] frames;
@@ -18,6 +20,7 @@ public class Medusa extends Entity {
         this.ay = 1200;
         this.ax = 0;
         this.vx = 0;
+        this.vy = 0 ;
         this.parterre = true;
 
         // Chargement des images
@@ -43,6 +46,10 @@ public class Medusa extends Entity {
         this.moved = moved;
     }
 
+    public boolean getParterre() {
+        return this.parterre;
+    }
+
     public boolean hasMoved(){
         return this.moved;
     }
@@ -63,7 +70,7 @@ public class Medusa extends Entity {
         }
     }
 
-    public void testCollision(Platform other) {
+    public boolean collides(Platform other) {
         /**
          * La collision avec une plateforme a lieu seulement si :
          *
@@ -75,11 +82,20 @@ public class Medusa extends Entity {
          * - La vitesse va vers le bas (le personnage est en train de tomber,
          * pas en train de sauter)
          */
+
+        if (intersects(other) && Math.abs(this.y + hauteur - other.y) > 10 && this.vy < 0){
+            System.out.println("oooo");
+            return true;
+        }
         if (intersects(other) && Math.abs(this.y + hauteur - other.y) < 10
-                && vy > 0) {
+                && vy > 0 ) {
             pushOut(other);
             this.vy = 0;
             this.parterre = true;
+            return true;
+        }
+        else {
+            return false;
         }
 
     }
@@ -90,7 +106,8 @@ public class Medusa extends Entity {
                         || other.x + other.largeur < this.x
                         // Un des carrés est en haut de l’autre
                         || y + hauteur < other.y
-                        || other.y + other.hauteur < this.y);
+                        || other.y + other.hauteur < this.y
+        );
     }
 
     /**
@@ -100,6 +117,11 @@ public class Medusa extends Entity {
     public void pushOut(Platform other) {
         double deltaY = this.y + this.hauteur - other.y;
         this.y -= deltaY;
+    }
+
+    public void pushDown(Platform other) {
+        double deltaY = this.y + this.hauteur - other.y;
+        this.y += deltaY;
     }
 
     public void setParterre(boolean parterre) {

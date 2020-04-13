@@ -3,6 +3,7 @@ import javafx.scene.paint.Color;
 
 public class PlateformeAccelere extends Platform {
 
+    double speedEffect;
     public PlateformeAccelere(int largeur, int x, double y) {
 
         this.x = x;
@@ -10,6 +11,7 @@ public class PlateformeAccelere extends Platform {
         this.largeur = largeur;
         this.hauteur = 10;
         this.color = Color.rgb(230, 221, 58) ;
+        this.speedEffect = 0;
     }
 
     @Override
@@ -26,8 +28,21 @@ public class PlateformeAccelere extends Platform {
         context.fillRect(x, yAffiche, largeur, hauteur);
     }
 
-    public void giveEffect(Jeu jeu){
-        jeu.setScreenVy(jeu.getScreenVy()*3);
+    @Override
+    public void giveEffect(Jeu jeu,Medusa m){
+
+        if ( (m.getParterre() && this.speedEffect == 0) ||  (m.getParterre() && this.speedEffect == jeu.getScreenVy())) {
+            this.speedEffect = jeu.getScreenVy()*3;
+            jeu.setScreenVy(this.speedEffect);
+        }
+    }
+
+    @Override
+    public void cancelEffect(Jeu jeu,Medusa m){
+        if (this.speedEffect != 0){
+        jeu.setScreenVy(this.speedEffect/3);
+        this.speedEffect = 0 ;
+        }
     }
 
 

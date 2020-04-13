@@ -27,15 +27,17 @@ public class PlateformeRebond extends Platform {
             context.fillRect(x, yAffiche, largeur, hauteur);
 
         }
-
-    public void giveEffect(Medusa m){
-        double v = m.vy *1.5;
-        if (v < 100){
-            m.vy = -100;
+        @Override
+        public void giveEffect( Jeu j ,Medusa m){
+            if(m.getParterre()){
+            double v = m.vy *1.5;
+            if (v < 100){
+                m.vy = -100;
+            }
+            else {
+                m.vy = -v;
+            }
         }
-        else {
-            m.vy = -v;
         }
-    }
 }
 
