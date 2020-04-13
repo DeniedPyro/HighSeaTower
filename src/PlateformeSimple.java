@@ -29,4 +29,9 @@ public class PlateformeSimple extends Platform {
         context.fillRect(x, yAffiche, largeur, hauteur);
     }
 
+    @Override
+    public void giveEffect(Jeu j , Medusa m){
+        m.vy = 0;
+    }
+
 }

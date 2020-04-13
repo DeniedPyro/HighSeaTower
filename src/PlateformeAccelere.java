@@ -32,6 +32,7 @@ public class PlateformeAccelere extends Platform {
     public void giveEffect(Jeu jeu,Medusa m){
 
         if ( (m.getParterre() && this.speedEffect == 0) ||  (m.getParterre() && this.speedEffect == jeu.getScreenVy())) {
+            m.vy = 0;
             this.speedEffect = jeu.getScreenVy()*3;
             jeu.setScreenVy(this.speedEffect);
         }

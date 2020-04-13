@@ -52,11 +52,10 @@ public class Jeu {
         else{
             Platform lastPlatform = platforms.get(platforms.size()-1);
             Color color = Color.rgb(184, 15, 36);
-            if (lastPlatform.color.equals(color)) {
+            if (!lastPlatform.color.equals(color)) {
                 return new PlateformeSolide(width,x,y);
             }
         }
-
         return this.generatePlatform(y);
     }
 
