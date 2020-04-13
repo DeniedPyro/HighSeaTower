@@ -3,6 +3,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -92,5 +93,6 @@ public class HighSeaTower extends Application {
         primaryStage.setTitle("High Sea Tower");
         primaryStage.show();
         primaryStage.setResizable(false);
+        primaryStage.getIcons().add(new Image("/images/jellyfish1.png"));
     }
 }
