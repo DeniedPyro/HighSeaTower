@@ -8,7 +8,7 @@ public class Medusa extends Entity {
     private Image image;
     private double frameRate = 8; // 8 frame par sec
     private double tempsTotal = 0;
-
+    public boolean isAlive = true;
     private boolean parterre;
     private boolean moved;
 

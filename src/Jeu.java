@@ -25,6 +25,10 @@ public class Jeu {
         medusa = new Medusa(WIDTH/2-25, HEIGHT-50);
     }
 
+    public Medusa getMedusa() {
+        return medusa;
+    }
+
     private Platform generatePlatform(int y){
         int width = R.nextInt(96) + 80;
         int x = R.nextInt(WIDTH - width + 1);
@@ -110,6 +114,10 @@ public class Jeu {
 
         }
         medusa.update(dt);
+
+        if (medusa.y + medusa.hauteur > HEIGHT + this.windowY+medusa.hauteur){
+            medusa.isAlive= false;
+        }
     }
 
     public void draw(GraphicsContext context) {
@@ -130,6 +138,18 @@ public class Jeu {
 
             }
         }
+    }
+
+    public void resetJeu(){
+        platforms.clear();
+        for (int i = 0; i < 4; i++) {
+            platforms.add(generatePlatform(370 - i * 110));
+        }
+        medusa = new Medusa(WIDTH/2-25, HEIGHT-50);
+        screenAy = 2;
+        screenVy = 50;
+        windowY = 0.0;
+
     }
 }
 

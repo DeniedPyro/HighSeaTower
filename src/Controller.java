@@ -17,6 +17,9 @@ public class Controller {
 
     void update(double deltaTime) {
         jeu.update(deltaTime);
+        if(!jeu.getMedusa().isAlive){
+            resetJeu();
+        }
     }
 
     void jump() {
@@ -36,7 +39,11 @@ public class Controller {
     }
 
     void updateDistance(Text distance){
-        distance.setText((int)Jeu.windowY + "m");
+        distance.setText((int)Math.abs(Jeu.windowY )+ "m");
+    }
+
+    void resetJeu(){
+        jeu.resetJeu();
     }
 
 
