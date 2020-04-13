@@ -84,10 +84,9 @@ public class Medusa extends Entity {
          */
 
         if (intersects(other) && Math.abs(this.y + hauteur - other.y) > 10 && this.vy < 0){
-            System.out.println("oooo");
             return true;
         }
-        if (intersects(other) && Math.abs(this.y + hauteur - other.y) < 10
+        else if (intersects(other) && Math.abs(this.y + hauteur - other.y) < 10
                 && vy > 0 ) {
             pushOut(other);
             this.vy = 0;

@@ -141,7 +141,6 @@ public class Jeu {
             }
             else {
                 context.clearRect(obj.x,obj.y,obj.largeur,obj.hauteur);
-                //System.out.println("ool");
                 p.remove();
 
             }
