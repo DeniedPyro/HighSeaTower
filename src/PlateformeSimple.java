@@ -3,16 +3,16 @@ import javafx.scene.paint.Color;
 
 import java.util.Random;
 
-public class Plateforme extends Entity {
+public class PlateformeSimple extends Platform {
 
-    public Plateforme(int largeur,int x,double y) {
+    public PlateformeSimple(int largeur, int x, double y) {
 
         this.x = x;
         this.y = y;
         this.largeur = largeur;
         this.hauteur = 15;
 
-        this.color = Color.DARKORCHID;
+        this.color = Color.rgb(230, 134, 58);
     }
 
     @Override
@@ -27,6 +27,10 @@ public class Plateforme extends Entity {
 
         context.setFill(color);
         context.fillRect(x, yAffiche, largeur, hauteur);
+
+    }
+
+    public void giveEffect(Medusa m){
 
     }
 }

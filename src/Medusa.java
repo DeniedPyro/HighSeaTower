@@ -63,7 +63,7 @@ public class Medusa extends Entity {
         }
     }
 
-    public void testCollision(Plateforme other) {
+    public void testCollision(Platform other) {
         /**
          * La collision avec une plateforme a lieu seulement si :
          *
@@ -84,7 +84,7 @@ public class Medusa extends Entity {
 
     }
 
-    public boolean intersects(Plateforme other) {
+    public boolean intersects(Platform other) {
         return !( // Un des carrés est à gauche de l’autre
                 x + largeur < other.x
                         || other.x + other.largeur < this.x
@@ -97,7 +97,7 @@ public class Medusa extends Entity {
      * Repousse le personnage vers le haut (sans déplacer la
      * plateforme)
      */
-    public void pushOut(Plateforme other) {
+    public void pushOut(Platform other) {
         double deltaY = this.y + this.hauteur - other.y;
         this.y -= deltaY;
     }

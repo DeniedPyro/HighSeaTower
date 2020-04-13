@@ -9,7 +9,7 @@ public class Jeu {
 
     public static final int WIDTH = 350, HEIGHT = 480;
 
-    private ArrayList<Plateforme> plateformes = new ArrayList<Plateforme>();
+    private ArrayList<Platform> plateformeSimples = new ArrayList<Platform>();
     private Medusa medusa;
     private double screenAy = 2;
     private double screenVy = 50;
@@ -23,7 +23,7 @@ public class Jeu {
             Random posX = new Random();
             int widthX = R.nextInt(81) + 95;
             int X = posX.nextInt(WIDTH - widthX + 1);
-            plateformes.add(new Plateforme(widthX,X,365 - i * 115));
+            plateformeSimples.add(new PlateformeSimple(widthX,X,365 - i * 115));
         }
 
         medusa = new Medusa(WIDTH/2-25, HEIGHT-50);
@@ -32,6 +32,15 @@ public class Jeu {
     public void jump() {
         medusa.jump();
     }
+
+    public double getScreenVy(){
+        return this.screenVy;
+    }
+
+    public void setScreenVy(double vy){
+        this.screenVy =vy;
+    }
+
 
     public void moveLeft() {
         medusa.moveLeft();
@@ -56,16 +65,16 @@ public class Jeu {
          * À chaque tour, on recalcule si le personnage se trouve parterre ou
          * non
          */
-        if (plateformes.get(plateformes.size()-1).y -windowY > 100 && windowY < 0){
+        if (plateformeSimples.get(plateformeSimples.size()-1).y -windowY > 100 && windowY < 0){
             Random R = new Random();
             Random posX = new Random();
             int widthX = R.nextInt(81) + 95;
             int X = posX.nextInt(WIDTH - widthX + 1);
-            plateformes.add(new Plateforme(widthX,X,plateformes.get(plateformes.size() - 1).y-115));
+            plateformeSimples.add(new PlateformeSimple(widthX,X, plateformeSimples.get(plateformeSimples.size() - 1).y-115));
         }
 
 
-        for (Plateforme p : plateformes) {
+        for (Platform p : plateformeSimples) {
             // Si le personnage se trouve sur une plateforme, ça sera défini ici
             //p.update(dt);
             medusa.testCollision(p);
@@ -78,10 +87,10 @@ public class Jeu {
         context.fillRect(0, 0, WIDTH, HEIGHT);
 
         medusa.draw(context,windowY);
-        Iterator<Plateforme> p = plateformes.iterator();
+        Iterator<Platform> p = plateformeSimples.iterator();
 
         while(p.hasNext()) {
-            Plateforme obj = p.next();
+            Platform obj = p.next();
             if (-obj.y > -Jeu.windowY-HEIGHT){
                 obj.draw(context, Jeu.windowY);
             }
@@ -91,21 +100,7 @@ public class Jeu {
                 p.remove();
 
             }
-            //System.out.println(plateformes.toString());
         }
-
-//        for (Plateforme p : plateformes) {
-//            if (p.y > windowY){
-//                p.draw(context, windowY);
-//            }
-//            else {
-//                context.clearRect(p.x,p.y,p.largeur,p.hauteur);
-//                plateformes.remove(p);
-//                //System.out.println(plateformes.toString());
-//
-//            }
-//        }
-
     }
 }
 
