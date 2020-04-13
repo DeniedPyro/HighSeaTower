@@ -10,7 +10,7 @@ public class PlateformeSimple extends Platform {
         this.x = x;
         this.y = y;
         this.largeur = largeur;
-        this.hauteur = 15;
+        this.hauteur = 10;
 
         this.color = Color.rgb(230, 134, 58);
     }

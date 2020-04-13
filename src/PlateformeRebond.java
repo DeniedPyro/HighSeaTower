@@ -8,7 +8,7 @@ public class PlateformeRebond extends Platform {
             this.x = x;
             this.y = y;
             this.largeur = largeur;
-            this.hauteur = 15;
+            this.hauteur = 10;
 
             this.color = Color.LIGHTGREEN;
         }
@@ -28,14 +28,13 @@ public class PlateformeRebond extends Platform {
 
         }
 
-    public void giveFffect(Medusa m){
+    public void giveEffect(Medusa m){
         double v = m.vy *1.5;
-
         if (v < 100){
-            m.y = -100;
+            m.vy = -100;
         }
         else {
-            m.y = -v;
+            m.vy = -v;
         }
     }
 }

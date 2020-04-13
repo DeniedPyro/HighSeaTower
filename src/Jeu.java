@@ -13,21 +13,20 @@ public class Jeu {
     private Medusa medusa;
     private double screenAy = 2;
     private double screenVy = 50;
-
+    private Random R = new Random();
     // Origine de la fenêtre☻
     public static double windowY = 0.0;
 
     public Jeu() {
         for (int i = 0; i < 4; i++) {
-            platforms.add(generatePlatform(365 - i * 115));
+            platforms.add(generatePlatform(370 - i * 110));
         }
 
         medusa = new Medusa(WIDTH/2-25, HEIGHT-50);
     }
 
     private Platform generatePlatform(int y){
-        Random R = new Random();
-        int width = R.nextInt(81) + 95;
+        int width = R.nextInt(96) + 80;
         int x = R.nextInt(WIDTH - width + 1);
 
         int choice = R.nextInt(100)+1;
@@ -36,25 +35,23 @@ public class Jeu {
             return new PlateformeSimple(width,x,y);
         }
 
-        else if (choice > 65 & choice <= 85){
+        else if (choice > 65 && choice <= 85){
             return new PlateformeRebond(width,x,y);
         }
 
-        else if (choice > 85 & choice <= 95){
+        else if (choice > 85 && choice <= 95){
             return new PlateformeAccelere(width,x,y);
 
         }
-
-        else if (choice > 95 & choice <= 30){
-           Platform lastPlaform = platforms.get(platforms.size()-1);
-           Color color = Color.rgb(184, 15, 36);
-            if (lastPlaform.color.equals(color)){
+        else{
+            Platform lastPlatform = platforms.get(platforms.size()-1);
+            Color color = Color.rgb(184, 15, 36);
+            if (lastPlatform.color.equals(color)){
+                this.generatePlatform(y);
+            }
+            else{
                 return new PlateformeSolide(width,x,y);
             }
-        else{
-            this.generatePlatform(y);
-            }
-
         }
 
         return null;
@@ -97,7 +94,7 @@ public class Jeu {
          * non
          */
         if (platforms.get(platforms.size()-1).y -windowY > 100 && windowY < 0){
-            Platform p = this.generatePlatform((int) platforms.get(platforms.size() - 1).y-115);
+            Platform p = this.generatePlatform((int) platforms.get(platforms.size() - 1).y-110);
             platforms.add(p);
         }
 
