@@ -7,6 +7,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
@@ -40,14 +41,35 @@ public class HighSeaTower extends Application {
 
         Canvas canvas = new Canvas(WIDTH, HEIGHT);
 
+        Text position = new Text("Position =  ");
+        position.setFill(Color.rgb(255,255,255));
+        position.setFont(Font.font(10));
+        Text v = new Text("v =  ");
+        v.setFill(Color.rgb(255,255,255));
+        v.setFont(Font.font(15));
+        Text a = new Text("a =  ");
+        a.setFont(Font.font(15));
+        a.setFill(Color.rgb(255,255,255));
+        position.setFont(Font.font(15));
+        Text ground = new Text("Touche le sol : ");
+        ground.setFont(Font.font(15));
+        ground.setFill(Color.rgb(255,255,255));
+
+
+        VBox vbox = new VBox(position,v,a,ground);
+        v.setX(166);
+
+
+
         Text distance = new Text("0 m");
         distance.setFill(Color.rgb(255,255,255));
-        distance.setX((WIDTH/2)-40);
-        distance.setFont(Font.font(40));
+        distance.setX((WIDTH/2)-30);
+        distance.setFont(Font.font(30));
         distance.setY(40);
+        VBox vbox2 = new VBox(distance);
+        vbox2.setAlignment(Pos.CENTER);
 
-        root.getChildren().addAll(canvas,distance);
-        distance.setTextAlignment(TextAlignment.CENTER);
+        root.getChildren().addAll(canvas,distance,vbox,vbox2);
 
         GraphicsContext context = canvas.getGraphicsContext2D();
 
