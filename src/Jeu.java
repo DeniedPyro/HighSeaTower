@@ -14,6 +14,8 @@ public class Jeu {
     private double screenAy = 2;
     private double screenVy = 50;
     private Random R = new Random();
+    private double speedEffect = 0;
+    private boolean lock = false;
     // Origine de la fenêtre☻
     public static double windowY = 0.0;
 
@@ -27,6 +29,10 @@ public class Jeu {
 
     public Medusa getMedusa() {
         return medusa;
+    }
+
+    private boolean isMedusaUp75(){
+        return (medusa.y < HEIGHT * 0.25 + this.windowY);
     }
 
     private Platform generatePlatform(int y){
@@ -77,6 +83,14 @@ public class Jeu {
         this.screenVy =vy;
     }
 
+    public double getScreenAy(){
+        return this.screenAy;
+    }
+
+    public void setScreenAy(double ay){
+        this.screenAy =ay;
+    }
+
 
     public void moveLeft() {
         medusa.moveLeft();
@@ -91,11 +105,10 @@ public class Jeu {
     }
 
     public void update(double dt) {
-        if (medusa.hasMoved()){
+        if (medusa.hasMoved()) {
             screenVy += dt * screenAy;
             windowY -= dt * screenVy;
         }
-
         /**
          * À chaque tour, on recalcule si le personnage se trouve parterre ou
          * non
@@ -117,12 +130,21 @@ public class Jeu {
             }
         }
         medusa.update(dt);
-
-        if(medusa.y + this.windowY < HEIGHT*0.25 + this.windowY){
-            System.out.println("i reached 75%");
+        if(isMedusaUp75() && speedEffect == 0){
+            System.out.println();
+            this.speedEffect = this.screenVy;
+            this.screenVy = Math.abs(medusa.vy);
+            lock = true;
         }
 
-        if (medusa.y + medusa.hauteur > HEIGHT + this.windowY+medusa.hauteur){
+        if(!isMedusaUp75() && lock){
+            System.out.println("bruh");
+            this.screenVy = this.speedEffect;
+            this.speedEffect = 0;
+            lock = false;
+        }
+
+        if (medusa.y > HEIGHT + this.windowY){
             medusa.isAlive= false;
         }
     }

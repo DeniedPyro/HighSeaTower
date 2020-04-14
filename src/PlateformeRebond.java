@@ -31,8 +31,8 @@ public class PlateformeRebond extends Platform {
     public void giveEffect( Jeu j ,Medusa m){
         if(m.getParterre()){
             double v = m.vy *1.5;
-            if (v < 100){
-                m.vy = -100;
+                if (v < 750){
+                m.vy = -750;
             }
             else {
                 m.vy = -v;

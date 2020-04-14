@@ -1,5 +1,6 @@
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -9,6 +10,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.application.Platform;
 
@@ -38,6 +40,7 @@ public class HighSeaTower extends Application {
         distance.setY(40);
 
         root.getChildren().addAll(canvas,distance);
+        distance.setTextAlignment(TextAlignment.CENTER);
 
         GraphicsContext context = canvas.getGraphicsContext2D();
 
