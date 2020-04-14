@@ -30,11 +30,13 @@ public class PlateformeAccelere extends Platform {
 
     @Override
     public void giveEffect(Jeu jeu,Medusa m){
-
+        if (m.getParterre()){
+            m.vy = 0;
+        }
+        
         if ( (m.getParterre() && this.speedEffect == 0) ||  (m.getParterre() && this.speedEffect == jeu.getScreenVy())) {
             this.speedEffect = jeu.getScreenVy()*3;
             jeu.setScreenVy(this.speedEffect);
-            m.pushOut(this);
         }
     }
 
