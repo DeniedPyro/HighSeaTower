@@ -213,14 +213,16 @@ public class Jeu {
         Iterator<Bubble> b = bubbles.iterator();
 
         while(b.hasNext()) {
+            System.out.println(bubbles);
             Bubble obj = b.next();
-            if (-obj.getY() > -Jeu.windowY-HEIGHT){
+            if (-obj.getY() < -Jeu.windowY){
+                System.out.println("oooooo");
                 obj.draw(context, Jeu.windowY);
             }
             else {
+                System.out.println("kkkkkkk");
                 context.clearRect(obj.getY(),obj.getY(),obj.getW(),obj.getH());
                 b.remove();
-
             }
         }
     }
