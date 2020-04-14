@@ -92,11 +92,10 @@ public class Jeu {
 
     public void update(double dt) {
         if (medusa.hasMoved()){
-
             screenVy += dt * screenAy;
             windowY -= dt * screenVy;
-
         }
+        
         /**
          * À chaque tour, on recalcule si le personnage se trouve parterre ou
          * non
@@ -116,9 +115,12 @@ public class Jeu {
             else {
                 p.cancelEffect(this,medusa);
             }
-
         }
         medusa.update(dt);
+
+        if(medusa.y + this.windowY < HEIGHT*0.25 + this.windowY){
+            System.out.println("i reached 75%");
+        }
 
         if (medusa.y + medusa.hauteur > HEIGHT + this.windowY+medusa.hauteur){
             medusa.isAlive= false;

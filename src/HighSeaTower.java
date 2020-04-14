@@ -71,6 +71,7 @@ public class HighSeaTower extends Application {
 
         AnimationTimer timer = new AnimationTimer() {
             private long lastTime = 0;
+            private final double maxDt = 0.01;
 
             @Override
             public void handle(long now) {
@@ -80,6 +81,10 @@ public class HighSeaTower extends Application {
                 }
 
                 double deltaTime = (now - lastTime) * 1e-9;
+                while (deltaTime > maxDt) {
+                    controller.update(maxDt);
+                    deltaTime -= maxDt;
+                }
                 controller.update(deltaTime);
                 controller.updateDistance(distance);
                 controller.draw(context);
