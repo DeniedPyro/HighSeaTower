@@ -39,7 +39,7 @@ public class Bubble extends Entity{
 
         x = Math.min(x, HighSeaTower.WIDTH - r);
         x = Math.max(x, r);
-        
+
     }
 
     /**
@@ -112,7 +112,7 @@ public class Bubble extends Entity{
 
         double yAffiche = this.y - windowY;
 
-        context.fillOval(this.getX(),this.getY(),
+        context.fillOval(this.getX(),yAffiche,
                 this.getW(), this.getH());
         context.setFill(Color.rgb(0, 0, 255, 0.4));
 
