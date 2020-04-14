@@ -46,8 +46,6 @@ public class PlateformeAccelere extends Platform {
         }
     }
 
-
-
-
+    
 }
 
