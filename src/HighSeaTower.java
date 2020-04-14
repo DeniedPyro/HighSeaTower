@@ -7,17 +7,24 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.application.Platform;
+import javafx.util.Duration;
+
+import java.io.File;
 
 public class HighSeaTower extends Application {
 
     public static final int WIDTH = 350, HEIGHT = 480;
-
+    String path = "src/OST/Floaties-K4Z-Remix.mp3";
+    Media media = new Media(new File(path).toURI().toString());
+    private MediaPlayer mediaPlayer = new MediaPlayer(media);
     /**
      * @param args the command line arguments
      */
@@ -45,7 +52,6 @@ public class HighSeaTower extends Application {
         GraphicsContext context = canvas.getGraphicsContext2D();
 
         Controller controller = new Controller();
-
         scene.setOnKeyPressed((value) -> {
             if (value.getCode() == KeyCode.SPACE || value.getCode() == KeyCode.UP  ) {
                 controller.jump();
@@ -76,6 +82,8 @@ public class HighSeaTower extends Application {
             private long lastTime = 0;
             private final double maxDt = 0.01;
 
+
+
             @Override
             public void handle(long now) {
                 if (lastTime == 0) {
@@ -102,5 +110,9 @@ public class HighSeaTower extends Application {
         primaryStage.show();
         primaryStage.setResizable(false);
         primaryStage.getIcons().add(new Image("/images/jellyfish1.png"));
+
+        mediaPlayer.setVolume(0.1);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.play();
     }
 }
