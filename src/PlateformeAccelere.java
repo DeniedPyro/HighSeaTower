@@ -40,7 +40,7 @@ public class PlateformeAccelere extends Platform {
 
     @Override
     public void cancelEffect(Jeu jeu,Medusa m){
-        if (this.speedEffect != 0){
+        if (this.speedEffect != 0 && m.getParterre()){
         jeu.setScreenVy(this.speedEffect/3);
         this.speedEffect = 0 ;
         }
