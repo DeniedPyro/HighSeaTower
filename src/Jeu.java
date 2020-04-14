@@ -50,7 +50,10 @@ public class Jeu {
 
         }
         else{
-            if(platforms.size()>0) {
+            if(platforms.size() == 0) {
+                return new PlateformeSolide(width, x, y);
+            }
+            else {
                 Platform lastPlatform = platforms.get(platforms.size() - 1);
 
                 Color color = Color.rgb(184, 15, 36);
