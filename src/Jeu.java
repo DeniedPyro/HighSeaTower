@@ -130,17 +130,17 @@ public class Jeu {
             for (int i =0; i < numGroup; i++){
                 addBubbleGroup(bubbles);
             }
-            this.bubbleTimeIntervalTrack = 0 ;
+            this.bubbleTimeIntervalTrack -=3 ;
         }
 
         if (!this.bubbles.isEmpty()){
-            for (int i = 0; i < this.bubbles.size()-1; i++) {
+            for (int i = 0; i < this.bubbles.size(); i++) {
                 Bubble b = this.bubbles.get(i);
                 b.updateAcc(b.getX(), b.getY()-HEIGHT-b.getY());
                 b.update(dt);
 
                 // Collision de la balle avec toutes les balles suivantes
-                for (int j = i + 1; j < bubbles.size()-1; j++) {
+                for (int j = i + 1; j < bubbles.size(); j++) {
                     b.testCollision(this.bubbles.get(j));
                 }
         }
@@ -210,21 +210,34 @@ public class Jeu {
             }
         }
 
-        Iterator<Bubble> b = bubbles.iterator();
-
-        while(b.hasNext()) {
-            System.out.println(bubbles);
-            Bubble obj = b.next();
-            if (-obj.getY() < -Jeu.windowY){
+        for(int i=0; i<this.bubbles.size(); i++) {
+            Bubble bubble = this.bubbles.get(i);
+            if (-bubble.getY() < (Jeu.windowY +HEIGHT) ){
                 System.out.println("oooooo");
-                obj.draw(context, Jeu.windowY);
+                bubble.draw(context, Jeu.windowY);
             }
             else {
                 System.out.println("kkkkkkk");
-                context.clearRect(obj.getY(),obj.getY(),obj.getW(),obj.getH());
-                b.remove();
+                context.clearRect(bubble.getY(),bubble.getY(),bubble.getW(),bubble.getH());
+                this.bubbles.remove(i); // Retire l'élément zéro
             }
         }
+
+        Iterator<Bubble> b = bubbles.iterator();
+
+//        while(b.hasNext()) {
+//            System.out.println(bubbles);
+//            Bubble obj = b.next();
+//            if (-obj.getY() < -Jeu.windowY-obj.getY()){
+//                System.out.println("oooooo");
+//                obj.draw(context, Jeu.windowY);
+//            }
+//            else {
+//                System.out.println("kkkkkkk");
+//                context.clearRect(obj.getY(),obj.getY(),obj.getW(),obj.getH());
+//                b.remove();
+//            }
+//        }
     }
 
     public void resetJeu(){
