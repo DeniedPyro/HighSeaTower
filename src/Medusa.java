@@ -101,11 +101,11 @@ public class Medusa extends Entity {
 
     public boolean intersects(Platform other) {
         return !( // Un des carrés est à gauche de l’autre
-                x + largeur < other.x
-                        || other.x + other.largeur < this.x
-                        // Un des carrés est en haut de l’autre
-                        || y + hauteur < other.y
-                        || other.y + other.hauteur < this.y
+            x + largeur < other.x
+            || other.x + other.largeur < this.x
+            // Un des carrés est en haut de l’autre
+            || y + hauteur < other.y
+            || other.y + other.hauteur < this.y
         );
     }
 
@@ -116,11 +116,6 @@ public class Medusa extends Entity {
     public void pushOut(Platform other) {
         double deltaY = this.y + this.hauteur - other.y;
         this.y -= deltaY;
-    }
-
-    public void pushDown(Platform other) {
-        double deltaY = this.y + this.hauteur - other.y;
-        this.y += deltaY;
     }
 
     public void setParterre(boolean parterre) {
