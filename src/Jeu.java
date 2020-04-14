@@ -40,11 +40,11 @@ public class Jeu {
         Bubble[] balles = new Bubble[5];
         int basex = generateNumBetween(0, WIDTH);
         for (int i = 0; i < 5; i++) {
-            int v = generateNumBetween(150, 175);
+            int v = generateNumBetween(350, 450);
             int r = generateNumBetween(5, 20);
-            int x = generateNumBetween(0, 20);
+            int x = generateNumBetween(0, 40)-20;
             int y = generateNumBetween(0, 20);
-            b.add(new Bubble(WIDTH - basex - x, HEIGHT - y, r, -v));
+            b.add(new Bubble(basex - x, HEIGHT - y + windowY, r, -v));
         }
     }
 
@@ -126,8 +126,7 @@ public class Jeu {
         this.bubbleTimeIntervalTrack +=dt;
 
         if(this.bubbleTimeIntervalTrack > 3.0 &&  this.bubbles.isEmpty() ){
-            int numGroup = generateNumBetween(1,3);
-            for (int i =0; i < numGroup; i++){
+            for (int i =0; i < 3; i++){
                 addBubbleGroup(bubbles);
             }
             this.bubbleTimeIntervalTrack -=3 ;
@@ -136,13 +135,13 @@ public class Jeu {
         if (!this.bubbles.isEmpty()){
             for (int i = 0; i < this.bubbles.size(); i++) {
                 Bubble b = this.bubbles.get(i);
-                b.updateAcc(b.getX(), b.getY()-HEIGHT-b.getY());
+                //b.updateAcc(b.getX(), b.getY()-HEIGHT-b.getY());
                 b.update(dt);
 
                 // Collision de la balle avec toutes les balles suivantes
-                for (int j = i + 1; j < bubbles.size(); j++) {
-                    b.testCollision(this.bubbles.get(j));
-                }
+                //for (int j = i + 1; j < bubbles.size(); j++) {
+                //    b.testCollision(this.bubbles.get(j));
+                //}
         }
         }
 
@@ -212,13 +211,11 @@ public class Jeu {
 
         for(int i=0; i<this.bubbles.size(); i++) {
             Bubble bubble = this.bubbles.get(i);
-            if (bubble.getY() > Jeu.windowY - HEIGHT - bubble.getY()) {
-                System.out.println("oooooo");
+            if (bubble.getY() > Jeu.windowY - HEIGHT) {
                 bubble.draw(context, Jeu.windowY);
             }
             else {
-                System.out.println("kkkkkkk");
-                context.clearRect(bubble.getY(),bubble.getY(),bubble.getW(),bubble.getH());
+                context.clearRect(bubble.getX(),bubble.getY(),bubble.getW(),bubble.getH());
                 this.bubbles.remove(i); // Retire l'élément zéro
             }
         }

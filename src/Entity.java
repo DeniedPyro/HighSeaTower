@@ -28,13 +28,10 @@ public abstract class Entity {
             vx *= -1;
             this.direction = !this.direction;
         }
-        if (y < Jeu.windowY) {
-            vy *= -1;
-        }
+
         x = Math.min(x, HighSeaTower.WIDTH - largeur);
         x = Math.max(x, 0);
         y = Math.min(y, HighSeaTower.HEIGHT - hauteur);
-        y = Math.max(y, Jeu.windowY);
 
 
     }
