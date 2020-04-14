@@ -15,7 +15,7 @@ public class Jeu {
     private double screenVy = 50;
     private Random R = new Random();
     private double speedEffect = 0;
-    private boolean Tick = false;
+    private boolean lock = false;
     // Origine de la fenêtre☻
     public static double windowY = 0.0;
 
@@ -31,7 +31,7 @@ public class Jeu {
         return medusa;
     }
 
-    private boolean trackMedusa(){
+    private boolean isMedusaUp75(){
         return (medusa.y < HEIGHT * 0.25 + this.windowY);
     }
 
@@ -130,18 +130,18 @@ public class Jeu {
             }
         }
         medusa.update(dt);
-        if(trackMedusa() && speedEffect == 0){
+        if(isMedusaUp75() && speedEffect == 0){
             System.out.println();
             this.speedEffect = this.screenVy;
             this.screenVy = Math.abs(medusa.vy);
-            Tick = true;
+            lock = true;
         }
 
-        if(!trackMedusa() && Tick){
+        if(!isMedusaUp75() && lock){
             System.out.println("bruh");
             this.screenVy = this.speedEffect;
             this.speedEffect = 0;
-            Tick = false;
+            lock = false;
         }
 
         if (medusa.y > HEIGHT + this.windowY){
