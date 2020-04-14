@@ -212,7 +212,7 @@ public class Jeu {
 
         for(int i=0; i<this.bubbles.size(); i++) {
             Bubble bubble = this.bubbles.get(i);
-            if (-bubble.getY() < (Jeu.windowY +HEIGHT) ){
+            if (bubble.getY() > Jeu.windowY - HEIGHT - bubble.getY()) {
                 System.out.println("oooooo");
                 bubble.draw(context, Jeu.windowY);
             }
@@ -222,22 +222,6 @@ public class Jeu {
                 this.bubbles.remove(i); // Retire l'élément zéro
             }
         }
-
-        Iterator<Bubble> b = bubbles.iterator();
-
-//        while(b.hasNext()) {
-//            System.out.println(bubbles);
-//            Bubble obj = b.next();
-//            if (-obj.getY() < -Jeu.windowY-obj.getY()){
-//                System.out.println("oooooo");
-//                obj.draw(context, Jeu.windowY);
-//            }
-//            else {
-//                System.out.println("kkkkkkk");
-//                context.clearRect(obj.getY(),obj.getY(),obj.getW(),obj.getH());
-//                b.remove();
-//            }
-//        }
     }
 
     public void resetJeu(){

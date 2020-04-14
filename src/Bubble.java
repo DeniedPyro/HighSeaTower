@@ -109,12 +109,10 @@ public class Bubble extends Entity{
     }
 
     public void draw(GraphicsContext context, double windowY) {
-
         double yAffiche = this.y - windowY;
-
+        context.setFill(Color.rgb(0, 0, 255, 0.4));
         context.fillOval(this.getX(),yAffiche,
                 this.getW(), this.getH());
-        context.setFill(Color.rgb(0, 0, 255, 0.4));
 
 }
 
