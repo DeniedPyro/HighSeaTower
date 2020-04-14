@@ -36,15 +36,10 @@ public class Bubble extends Entity{
         if (x + r > HighSeaTower.WIDTH || x - r < 0) {
             vx *= -0.5;
         }
-        if (y + r > HighSeaTower.HEIGHT || y - r < 0) {
-            vy *= -0.5;
-        }
 
         x = Math.min(x, HighSeaTower.WIDTH - r);
         x = Math.max(x, r);
-
-        y = Math.min(y, HighSeaTower.HEIGHT - r);
-        y = Math.max(y, r);
+        
     }
 
     /**
