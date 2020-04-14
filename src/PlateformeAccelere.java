@@ -4,6 +4,7 @@ import javafx.scene.paint.Color;
 public class PlateformeAccelere extends Platform {
 
     double speedEffect;
+    double accelerateEffect;
     public PlateformeAccelere(int largeur, int x, double y) {
 
         this.x = x;
@@ -41,8 +42,8 @@ public class PlateformeAccelere extends Platform {
     @Override
     public void cancelEffect(Jeu jeu,Medusa m){
         if (this.speedEffect != 0 && !m.getParterre()){
-        jeu.setScreenVy(this.speedEffect/3);
-        this.speedEffect = 0 ;
+            jeu.setScreenVy(this.speedEffect/3);
+            this.speedEffect = 0 ;
         }
     }
 
