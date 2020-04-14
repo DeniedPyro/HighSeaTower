@@ -95,7 +95,7 @@ public class Jeu {
             screenVy += dt * screenAy;
             windowY -= dt * screenVy;
         }
-        
+
         /**
          * À chaque tour, on recalcule si le personnage se trouve parterre ou
          * non
