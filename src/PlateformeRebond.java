@@ -3,33 +3,33 @@ import javafx.scene.paint.Color;
 
 public class PlateformeRebond extends Platform {
 
-        public PlateformeRebond(int largeur, int x, double y) {
+    public PlateformeRebond(int largeur, int x, double y) {
 
-            this.x = x;
-            this.y = y;
-            this.largeur = largeur;
-            this.hauteur = 10;
+        this.x = x;
+        this.y = y;
+        this.largeur = largeur;
+        this.hauteur = 10;
 
-            this.color = Color.LIGHTGREEN;
-        }
+        this.color = Color.LIGHTGREEN;
+    }
 
-        @Override
-        public void draw(GraphicsContext context) {
-            context.setFill(color);
-            context.fillRect(x, y, largeur, hauteur);
-        }
+    @Override
+    public void draw(GraphicsContext context) {
+        context.setFill(color);
+        context.fillRect(x, y, largeur, hauteur);
+    }
 
-        public void draw(GraphicsContext context,double windowY) {
+    public void draw(GraphicsContext context,double windowY) {
 
-            double yAffiche = this.y - Jeu.windowY;
+        double yAffiche = this.y - Jeu.windowY;
 
-            context.setFill(color);
-            context.fillRect(x, yAffiche, largeur, hauteur);
+        context.setFill(color);
+        context.fillRect(x, yAffiche, largeur, hauteur);
 
-        }
-        @Override
-        public void giveEffect( Jeu j ,Medusa m){
-            if(m.getParterre()){
+    }
+    @Override
+    public void giveEffect( Jeu j ,Medusa m){
+        if(m.getParterre()){
             double v = m.vy *1.5;
             if (v < 100){
                 m.vy = -100;
@@ -38,6 +38,6 @@ public class PlateformeRebond extends Platform {
                 m.vy = -v;
             }
         }
-        }
+    }
 }
 
