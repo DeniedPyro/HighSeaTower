@@ -10,11 +10,13 @@ public class Jeu {
     public static final int WIDTH = 350, HEIGHT = 480;
 
     private ArrayList<Platform> platforms = new ArrayList<Platform>();
+    private ArrayList<Bubble> bubbles = new ArrayList<Bubble>();
     private Medusa medusa;
     private double screenAy = 2;
     private double screenVy = 50;
     private Random R = new Random();
     private double speedEffect = 0;
+    private double bubbleTimeIntervalTrack = 0.0;
     private boolean lock = false;
     // Origine de la fenêtre☻
     public static double windowY = 0.0;
@@ -30,8 +32,23 @@ public class Jeu {
     public Medusa getMedusa() {
         return medusa;
     }
+    private int generateNumBetween(int min, int max) {
+        return R.nextInt((max - min) + 1) + min;
+    }
 
-    private boolean isMedusaUp75(){
+    private void addBubbleGroup(ArrayList<Bubble> b) {
+        Bubble[] balles = new Bubble[5];
+        int basex = generateNumBetween(0, WIDTH);
+        for (int i = 0; i < 5; i++) {
+            int v = generateNumBetween(150, 175);
+            int r = generateNumBetween(5, 20);
+            int x = generateNumBetween(0, 20);
+            int y = generateNumBetween(0, 20);
+            b.add(new Bubble(WIDTH - basex - x, HEIGHT - y, r, -v));
+        }
+    }
+
+        private boolean isMedusaUp75(){
         return (medusa.y < HEIGHT * 0.25 + this.windowY);
     }
 
@@ -105,10 +122,36 @@ public class Jeu {
     }
 
     public void update(double dt) {
+
+        this.bubbleTimeIntervalTrack +=dt;
+
+        if(this.bubbleTimeIntervalTrack > 3.0 &&  this.bubbles.isEmpty() ){
+            int numGroup = generateNumBetween(1,3);
+            for (int i =0; i < numGroup; i++){
+                addBubbleGroup(bubbles);
+            }
+            this.bubbleTimeIntervalTrack = 0 ;
+        }
+
+        if (!this.bubbles.isEmpty()){
+            for (int i = 0; i < this.bubbles.size()-1; i++) {
+                Bubble b = this.bubbles.get(i);
+                b.updateAcc(b.getX(), b.getY()-HEIGHT-b.getY());
+                b.update(dt);
+
+                // Collision de la balle avec toutes les balles suivantes
+                for (int j = i + 1; j < bubbles.size()-1; j++) {
+                    b.testCollision(this.bubbles.get(j));
+                }
+        }
+        }
+
         if (medusa.hasMoved()) {
             screenVy += dt * screenAy;
             windowY -= dt * screenVy;
         }
+
+
         /**
          * À chaque tour, on recalcule si le personnage se trouve parterre ou
          * non
@@ -130,6 +173,7 @@ public class Jeu {
             }
         }
         medusa.update(dt);
+
         if(isMedusaUp75() && speedEffect == 0){
             System.out.println();
             this.speedEffect = this.screenVy;
@@ -138,7 +182,6 @@ public class Jeu {
         }
 
         if(!isMedusaUp75() && lock){
-            System.out.println("bruh");
             this.screenVy = this.speedEffect;
             this.speedEffect = 0;
             lock = false;
@@ -164,6 +207,19 @@ public class Jeu {
             else {
                 context.clearRect(obj.x,obj.y,obj.largeur,obj.hauteur);
                 p.remove();
+            }
+        }
+
+        Iterator<Bubble> b = bubbles.iterator();
+
+        while(b.hasNext()) {
+            Bubble obj = b.next();
+            if (-obj.getY() > -Jeu.windowY-HEIGHT){
+                obj.draw(context, Jeu.windowY);
+            }
+            else {
+                context.clearRect(obj.getY(),obj.getY(),obj.getW(),obj.getH());
+                b.remove();
 
             }
         }
