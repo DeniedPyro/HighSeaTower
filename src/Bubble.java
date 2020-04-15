@@ -61,7 +61,6 @@ public class Bubble extends Entity{
     public double getW() {
         return 2 * r;
     }
-
     
     /** Getter de H
      * @return double

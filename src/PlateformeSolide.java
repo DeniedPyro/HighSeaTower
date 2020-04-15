@@ -55,5 +55,4 @@ public class PlateformeSolide extends Platform{
             this.resetColor();
         }
     }
-
 }

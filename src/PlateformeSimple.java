@@ -61,5 +61,4 @@ public class PlateformeSimple extends Platform {
             this.resetColor();
         }
     }
-
 }

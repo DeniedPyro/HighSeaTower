@@ -119,4 +119,11 @@ public class Controller {
         jeu.resetJeu();
     }
 
+    /** call la methode getDebug du jeu
+     *
+     */
+
+    boolean getDebug() {
+        return jeu.getDebug();
+    }
 }

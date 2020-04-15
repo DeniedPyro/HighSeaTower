@@ -68,4 +68,3 @@ public class PlateformeRebond extends Platform {
     }
 
 }
-

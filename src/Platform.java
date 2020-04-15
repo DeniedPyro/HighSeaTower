@@ -30,6 +30,4 @@ class Platform extends Entity {
     public void cancelEffect(Jeu j , Medusa m){
         ;
     }
-
-
 }

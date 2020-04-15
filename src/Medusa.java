@@ -237,4 +237,4 @@ public class Medusa extends Entity {
         this.vx = 0;
         this.ax = 0;
     }
-} 
+}

@@ -21,9 +21,12 @@ import java.io.File;
 public class HighSeaTower extends Application {
 
     public static final int WIDTH = 350, HEIGHT = 480;
-    String path = "src/OST/Floaties-K4Z-Remix.mp3";
-    Media media = new Media(new File(path).toURI().toString());
-    private MediaPlayer mediaPlayer = new MediaPlayer(media);
+    String pathMusic = "src/OST/Floaties-K4Z-Remix.mp3";
+    String pathJump = "src/OST/jump.mp3";
+    Media mediaMusic = new Media(new File(pathMusic).toURI().toString());
+    Media mediaJump = new Media(new File(pathJump).toURI().toString());
+    private MediaPlayer mediaPlayMusic = new MediaPlayer(mediaMusic);
+    private MediaPlayer mediaPlayJump = new MediaPlayer(mediaJump);
     /**
      * @param args the command line arguments
      */
@@ -80,6 +83,8 @@ public class HighSeaTower extends Application {
         scene.setOnKeyPressed((value) -> {
             if (value.getCode() == KeyCode.SPACE || value.getCode() == KeyCode.UP) {
                 controller.jump();
+                mediaPlayJump.play();
+
             }
 
             if (value.getCode() == KeyCode.LEFT) {
@@ -128,14 +133,14 @@ public class HighSeaTower extends Application {
                 controller.update(deltaTime);
                 controller.updateDistance(distance);
 
-                if (controller.jeu.getDebug()){
+                if (controller.getDebug()){
                     vbox.setVisible(true);
                     controller.updatePosition(position);
                     controller.updateSpeed(v);
                     controller.updateAcc(a);
                     controller.updateGround(ground);
                 }
-                else if (!controller.jeu.getDebug() && vbox.isVisible()){
+                else if (!controller.getDebug() && vbox.isVisible()){
                     vbox.setVisible(false);
                 }
 
@@ -151,8 +156,8 @@ public class HighSeaTower extends Application {
         primaryStage.setResizable(false);
         primaryStage.getIcons().add(new Image("/images/jellyfish1.png"));
 
-        mediaPlayer.setVolume(0.04);
-        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        mediaPlayer.play();
+        mediaPlayMusic.setVolume(0.04);
+        mediaPlayMusic.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayMusic.play();
     }
 }
