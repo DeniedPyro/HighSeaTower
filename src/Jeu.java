@@ -141,21 +141,12 @@ public class Jeu {
     }
 
 
-    /**
+    /** donne la valeur de lacceleration de defilement de lecran
      * @return double
      */
     public double getScreenAy() {
         return this.screenAy;
     }
-
-
-    /**
-     * @param ay
-     */
-    public void setScreenAy(double ay) {
-        this.screenAy = ay;
-    }
-
 
     public void moveLeft() {
         medusa.moveLeft();
@@ -170,7 +161,7 @@ public class Jeu {
     }
 
 
-    /**
+    /** fait la mise a jour du jeu
      * @param dt
      */
     public void update(double dt) {
