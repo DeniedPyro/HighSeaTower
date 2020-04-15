@@ -31,21 +31,6 @@ public class Jeu {
     }
 
 
-    /**
-     * @return boolean
-     */
-    public boolean getDebug() {
-        return this.debug;
-    }
-
-
-    /**
-     * @param debug
-     */
-    public void setDebug(boolean debug) {
-        this.debug = debug;
-    }
-
 
     /**
      * @return Medusa
@@ -80,7 +65,7 @@ public class Jeu {
     }
 
 
-    /**
+    /**Retourne is la meduse est positioner a 75% de lecran
      * @return boolean
      */
     private boolean isMedusaUp75() {
@@ -88,7 +73,7 @@ public class Jeu {
     }
 
 
-    /**
+    /**retourne un type de platforme
      * @param y
      * @return Platform
      */
@@ -120,12 +105,23 @@ public class Jeu {
         return this.generatePlatform(y);
     }
 
-    public void jump() {
-        medusa.jump();
+    /**retourne la valeur du debug
+     * @return boolean
+     */
+    public boolean getDebug() {
+        return this.debug;
     }
 
 
-    /**
+    /**modifie la valeur du debug
+     * @param debug
+     */
+    public void setDebug(boolean debug) {
+        this.debug = debug;
+    }
+
+
+    /**retourne la valeur de la vitesse en y du defilement de lecran
      * @return double
      */
     public double getScreenVy() {
@@ -133,7 +129,7 @@ public class Jeu {
     }
 
 
-    /**
+    /**modifie la valeur de la vitesse en y du defilement de lecran
      * @param vy
      */
     public void setScreenVy(double vy) {
@@ -141,21 +137,32 @@ public class Jeu {
     }
 
 
-    /** donne la valeur de lacceleration de defilement de lecran
+    /** retourne la valeur de lacceleration en y du defilement de lecran
      * @return double
      */
     public double getScreenAy() {
         return this.screenAy;
     }
 
+    /**Permet a la meduse de bouger a gauche
+     */
     public void moveLeft() {
         medusa.moveLeft();
     }
-
+    /**Permet a la meduse de bouger a droite
+     */
     public void moveRight() {
         medusa.moveRight();
     }
 
+    /**Permet a la meduse de sauter
+     */
+    public void jump() {
+        medusa.jump();
+    }
+
+    /**Arrete le mouvement de la meduse
+     */
     public void stop() {
         medusa.stop();
     }
@@ -192,10 +199,8 @@ public class Jeu {
             windowY -= dt * screenVy;
         }
 
-
         /**
-         * À chaque tour, on recalcule si le personnage se trouve parterre ou
-         * non
+         *Ajouter les platformes s'il y a de l'espace pour l'ajouter
          */
         if (platforms.get(platforms.size() - 1).y - windowY > 110 && windowY < 0) {
             Platform p = this.generatePlatform((int) platforms.get(platforms.size() - 1).y - 110);
@@ -203,7 +208,6 @@ public class Jeu {
         }
 
         Iterator<Platform> platformIterator = platforms.iterator();
-
         while (platformIterator.hasNext()) {
             Platform p = platformIterator.next();
             if (medusa.collides(p)) {
@@ -212,8 +216,9 @@ public class Jeu {
                 p.cancelEffect(this, medusa);
             }
         }
-        medusa.update(dt);
 
+
+        medusa.update(dt);
         if (isMedusaUp75() && speedEffect == 0) {
             System.out.println();
             this.speedEffect = this.screenVy;
@@ -226,14 +231,13 @@ public class Jeu {
             this.speedEffect = 0;
             lock = false;
         }
-
         if (medusa.y > HEIGHT + this.windowY) {
             medusa.isAlive = false;
         }
     }
 
 
-    /**
+    /**Permet de dessiner la le contenue du jeu
      * @param context
      */
     public void draw(GraphicsContext context) {
@@ -264,6 +268,8 @@ public class Jeu {
         }
     }
 
+    /**Permet relancer le jeu
+     */
     public void resetJeu() {
         platforms.clear();
         for (int i = 0; i < 4; i++) {
