@@ -255,7 +255,7 @@ public class Jeu {
         while (p.hasNext()) {
             Platform obj = p.next();
             if (-obj.y > -Jeu.windowY - HEIGHT) {
-                obj.draw(context, Jeu.windowY);
+                obj.draw(context);
             } else {
                 context.clearRect(obj.x, obj.y, obj.largeur, obj.hauteur);
                 p.remove();
@@ -265,7 +265,7 @@ public class Jeu {
         for (int i = 0; i < this.bubbles.size(); i++) {
             Bubble bubble = this.bubbles.get(i);
             if (bubble.getY() > Jeu.windowY - HEIGHT) {
-                bubble.draw(context, Jeu.windowY);
+                bubble.draw(context);
             } else {
                 context.clearRect(bubble.getX(), bubble.getY(), bubble.getW(), bubble.getH());
                 this.bubbles.remove(i); // Retire l'élément zéro

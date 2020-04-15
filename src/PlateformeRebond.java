@@ -18,30 +18,14 @@ public class PlateformeRebond extends Platform {
     }
 
     
-    /** 
+    /** permet de dessiner la plateforme
      * @param context
      */
     @Override
     public void draw(GraphicsContext context) {
-        context.setFill(color);
-        context.fillRect(x, y, largeur, hauteur);
+        super.draw(context);
     }
 
-    
-    /** 
-     * @param context
-     * @param windowY
-     */
-    public void draw(GraphicsContext context,double windowY) {
-
-        double yAffiche = this.y - Jeu.windowY;
-
-        context.setFill(color);
-        context.fillRect(x, yAffiche, largeur, hauteur);
-
-    }
-
-    
     /** 
      * @param j
      * @param m

@@ -17,17 +17,16 @@ public class PlateformeSolide extends Platform{
     }
 
     
-    /** 
+    /** permet de dessiner la plateforme
      * @param context
      */
     @Override
     public void draw(GraphicsContext context) {
-        context.setFill(color);
-        context.fillRect(x, y, largeur, hauteur);
+        super.draw(context);
     }
 
     
-    /** 
+    /**
      * @param j
      * @param m
      */
@@ -44,7 +43,7 @@ public class PlateformeSolide extends Platform{
     }
 
     
-    /** 
+    /** reset la couleur de la plateforme en mode debug
      * @param j
      * @param m
      */

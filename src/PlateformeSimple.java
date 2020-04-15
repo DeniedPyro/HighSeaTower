@@ -15,32 +15,17 @@ public class PlateformeSimple extends Platform {
         this.color = Color.rgb(230, 134, 58);
     }
 
-    
-    /** 
-     * @param context
-     */
-    @Override
-    public void draw(GraphicsContext context) {
-        context.setFill(color);
-        context.fillRect(x, y, largeur, hauteur);
-    }
-
     private void resetColor(){
         Color orange = Color.rgb(230, 134, 58);
         this.color = orange ;
     }
 
-    
-    /** 
+    /** permet de dessiner la plateforme
      * @param context
-     * @param windowY
      */
-    public void draw(GraphicsContext context,double windowY) {
-
-        double yAffiche = this.y - Jeu.windowY;
-
-        context.setFill(color);
-        context.fillRect(x, yAffiche, largeur, hauteur);
+    @Override
+    public void draw(GraphicsContext context) {
+        super.draw(context);
     }
 
     

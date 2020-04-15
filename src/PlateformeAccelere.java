@@ -4,7 +4,6 @@ import javafx.scene.paint.Color;
 public class PlateformeAccelere extends Platform {
 
     double speedEffect;
-    double accelerateEffect;
     public PlateformeAccelere(int largeur, int x, double y) {
 
         this.x = x;
@@ -20,30 +19,16 @@ public class PlateformeAccelere extends Platform {
     }
 
     
-    /** 
+    /** permet de dessiner la plateforme avec une position initiale
      * @param context
      */
     @Override
     public void draw(GraphicsContext context) {
-        context.setFill(color);
-        context.fillRect(x, y, largeur, hauteur);
+        super.draw(context);
     }
 
-    
-    /** 
-     * @param context
-     * @param windowY
-     */
-    public void draw(GraphicsContext context,double windowY) {
-
-        double yAffiche = this.y - Jeu.windowY;
-
-        context.setFill(color);
-        context.fillRect(x, yAffiche, largeur, hauteur);
-    }
-
-    
-    /** 
+    /** donner un effet à la meduse si elle est sur la plateforme:
+     * multiplier la vitesse de l'ecran par 3
      * @param j
      * @param m
      */
@@ -70,7 +55,7 @@ public class PlateformeAccelere extends Platform {
     }
 
     
-    /** 
+    /** annuler les effets recus par la meduse au moment ou elle sort de la collision avec la plateforme
      * @param jeu
      * @param m
      */
