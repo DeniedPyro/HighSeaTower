@@ -19,7 +19,10 @@ import javafx.application.Platform;
 import java.io.File;
 
 public class HighSeaTower extends Application {
-
+    /**
+     * @author Fahirah Diarra 20034025
+     * @author Hamdi Ghannem 20151932
+     */
     public static final int WIDTH = 350, HEIGHT = 480;
     String pathMusic = "src/OST/Floaties-K4Z-Remix.mp3";
     String pathJump = "src/OST/jump.wav";
@@ -29,14 +32,14 @@ public class HighSeaTower extends Application {
     private MediaPlayer mediaPlayJump = new MediaPlayer(mediaJump);
 
     /**
-     * @param args the command line arguments
+     * @param args
      */
     public static void main(String[] args) {
         launch(args);
     }
 
     
-    /** 
+    /** creation du stage
      * @param primaryStage
      * @throws Exception
      */
@@ -48,6 +51,7 @@ public class HighSeaTower extends Application {
 
         Canvas canvas = new Canvas(WIDTH, HEIGHT);
 
+        //Creation du texte du mode Debug
         Text position = new Text("Position =  ");
         position.setFill(Color.rgb(255,255,255));
         position.setFont(Font.font(10));
@@ -67,7 +71,7 @@ public class HighSeaTower extends Application {
         v.setX(166);
 
 
-
+        //creation du texte de la distance parcourue
         Text distance = new Text("0 m");
         distance.setFill(Color.rgb(255,255,255));
         distance.setX((WIDTH/2)-30);
@@ -79,7 +83,7 @@ public class HighSeaTower extends Application {
         root.getChildren().addAll(canvas,distance,vbox,vbox2);
 
         GraphicsContext context = canvas.getGraphicsContext2D();
-
+        //creation du controller
         Controller controller = new Controller();
         scene.setOnKeyPressed((value) -> {
             if (value.getCode() == KeyCode.SPACE || value.getCode() == KeyCode.UP) {
@@ -118,8 +122,6 @@ public class HighSeaTower extends Application {
             private long lastTime = 0;
             private final double maxDt = 0.01;
 
-
-
             @Override
             public void handle(long now) {
                 if (lastTime == 0) {
@@ -151,7 +153,7 @@ public class HighSeaTower extends Application {
             }
         };
         timer.start();
-
+        //settings de la scene
         primaryStage.setScene(scene);
         primaryStage.setTitle("High Sea Tower");
         primaryStage.show();

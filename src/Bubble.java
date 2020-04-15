@@ -32,7 +32,7 @@ public class Bubble extends Entity{
         context.fillOval(this.getX(),yAffiche,
         this.getW(), this.getH());
     }
-    
+
     /** Getter de X
      * @return double
      */
