@@ -71,6 +71,4 @@ public class PlateformeAccelere extends Platform {
             this.speedEffect = 0 ;
         }
     }
-
-
 }

@@ -22,11 +22,12 @@ public class HighSeaTower extends Application {
 
     public static final int WIDTH = 350, HEIGHT = 480;
     String pathMusic = "src/OST/Floaties-K4Z-Remix.mp3";
-    String pathJump = "src/OST/jump.mp3";
+    String pathJump = "src/OST/jump.wav";
     Media mediaMusic = new Media(new File(pathMusic).toURI().toString());
     Media mediaJump = new Media(new File(pathJump).toURI().toString());
     private MediaPlayer mediaPlayMusic = new MediaPlayer(mediaMusic);
     private MediaPlayer mediaPlayJump = new MediaPlayer(mediaJump);
+
     /**
      * @param args the command line arguments
      */
@@ -83,6 +84,7 @@ public class HighSeaTower extends Application {
         scene.setOnKeyPressed((value) -> {
             if (value.getCode() == KeyCode.SPACE || value.getCode() == KeyCode.UP) {
                 controller.jump();
+                mediaPlayJump.stop();
                 mediaPlayJump.play();
 
             }
@@ -155,7 +157,7 @@ public class HighSeaTower extends Application {
         primaryStage.show();
         primaryStage.setResizable(false);
         primaryStage.getIcons().add(new Image("/images/jellyfish1.png"));
-
+        mediaPlayJump.setVolume(0.25);
         mediaPlayMusic.setVolume(0.04);
         mediaPlayMusic.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayMusic.play();

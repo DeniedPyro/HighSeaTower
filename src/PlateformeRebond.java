@@ -64,7 +64,6 @@ public class PlateformeRebond extends Platform {
         if(!this.color.equals(color.LIGHTGREEN)){
             this.resetColor();
         }
-
     }
 
 }
