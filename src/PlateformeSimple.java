@@ -31,8 +31,19 @@ public class PlateformeSimple extends Platform {
 
     @Override
     public void giveEffect(Jeu j , Medusa m){
+
+        if(m.getParterre() && j.getDebug()){
+            this.color = Color.YELLOW;
+        }
+
         if (m.getParterre()) {
             m.vy = 0;
+        }
+    }
+    public  void  cancelEffect(Jeu j, Medusa m){
+        Color orange = Color.rgb(230, 134, 58);
+        if (!this.color.equals(orange)){
+            this.color = orange ;
         }
     }
 

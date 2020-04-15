@@ -38,6 +38,10 @@ public class Controller {
         jeu.stop();
     }
 
+    void toggleDebug() {
+        jeu.setDebug(!jeu.getDebug());
+    }
+
     void updateDistance(Text distance){
         distance.setText((int)Math.abs(Jeu.windowY )+ "m");
     }

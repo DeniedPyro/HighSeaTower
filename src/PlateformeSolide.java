@@ -21,7 +21,17 @@ public class PlateformeSolide extends Platform{
 
     @Override
     public void giveEffect(Jeu j , Medusa m){
+        if(m.getParterre() && j.getDebug()){
+            this.color = Color.YELLOW;
+        }
         m.vy = 0 ;
+    }
+
+    public  void  cancelEffect(Jeu j, Medusa m){
+        Color red = Color.rgb(184, 15, 36);
+        if (!this.color.equals(red)){
+            this.color = red ;
+        }
     }
 
 }

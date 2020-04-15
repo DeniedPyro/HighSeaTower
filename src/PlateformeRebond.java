@@ -29,6 +29,11 @@ public class PlateformeRebond extends Platform {
     }
     @Override
     public void giveEffect( Jeu j ,Medusa m){
+
+        if(m.getParterre() && j.getDebug()){
+            this.color = Color.YELLOW;
+        }
+
         if(m.getParterre()){
             double v = m.vy *1.5;
                 if (v < 750){
@@ -37,8 +42,16 @@ public class PlateformeRebond extends Platform {
             else {
                 m.vy = -v;
             }
-            m.setParterre(false);
         }
     }
+
+    @Override
+    public void cancelEffect( Jeu j, Medusa m){
+        if(!this.color.equals(color.LIGHTGREEN)){
+            this.color = Color.LIGHTGREEN;
+        }
+
+    }
+
 }
 

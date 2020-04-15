@@ -30,19 +30,29 @@ public class PlateformeAccelere extends Platform {
     }
 
     @Override
-    public void giveEffect(Jeu jeu,Medusa m){
+    public void giveEffect(Jeu j,Medusa m){
+
+        if(m.getParterre() && j.getDebug()){
+            this.color = Color.YELLOW;
+        }
+
         if (m.getParterre()){
             m.vy = 0;
         }
         
-        if ( (m.getParterre() && this.speedEffect == 0) ||  (m.getParterre() && this.speedEffect == jeu.getScreenVy())) {
-            this.speedEffect = jeu.getScreenVy()*3;
-            jeu.setScreenVy(this.speedEffect);
+        if ( (m.getParterre() && this.speedEffect == 0) ||  (m.getParterre() && this.speedEffect == j.getScreenVy())) {
+            this.speedEffect = j.getScreenVy()*3;
+            j.setScreenVy(this.speedEffect);
         }
     }
 
     @Override
     public void cancelEffect(Jeu jeu,Medusa m){
+        Color yellow = Color.rgb(230, 221, 58) ;
+        if(!this.color.equals(yellow)){
+            this.color = yellow ;
+        }
+
         if (this.speedEffect != 0 && !m.getParterre()){
             jeu.setScreenVy(this.speedEffect/3);
             this.speedEffect = 0 ;

@@ -75,7 +75,7 @@ public class HighSeaTower extends Application {
 
         Controller controller = new Controller();
         scene.setOnKeyPressed((value) -> {
-            if (value.getCode() == KeyCode.SPACE || value.getCode() == KeyCode.UP  ) {
+            if (value.getCode() == KeyCode.SPACE || value.getCode() == KeyCode.UP) {
                 controller.jump();
             }
 
@@ -86,6 +86,10 @@ public class HighSeaTower extends Application {
             if (value.getCode() == KeyCode.RIGHT) {
                 controller.moveRight();
             }
+            if (value.getCode() == KeyCode.T) {
+                controller.toggleDebug();
+            }
+
             if (value.getCode() == KeyCode.ESCAPE) {
                 Platform.exit();
             }
