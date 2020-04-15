@@ -12,7 +12,7 @@ public class Controller {
     }
 
     
-    /** 
+    /** Call la methode draw de jeu
      * @param context
      */
     void draw(GraphicsContext context) {
@@ -20,7 +20,7 @@ public class Controller {
     }
 
     
-    /** 
+    /** call la methode update de jeu puis reset le jeu si la meduse est morte
      * @param deltaTime
      */
     void update(double deltaTime) {
@@ -30,28 +30,43 @@ public class Controller {
         }
     }
 
+    /** call la methode jump de jeu
+     *
+     */
     void jump() {
         jeu.jump();
     }
 
+    /** call la methode moveLeft du jeu
+     *
+     */
     void moveLeft() {
         jeu.moveLeft();
     }
 
+    /** call la methode moveRight du jeu
+     *
+     */
     void moveRight() {
         jeu.moveRight();
     }
-    
+
+    /** call la methode stop du jeu
+     *
+     */
     void stop() {
         jeu.stop();
     }
 
+    /** permet de toggle le mode Debug
+     *
+     */
     void toggleDebug() {
         jeu.setDebug(!jeu.getDebug());
     }
 
     
-    /** 
+    /** ajouter le texte de distance parcourue
      * @param distance
      */
     void updateDistance(Text distance){
@@ -59,7 +74,7 @@ public class Controller {
     }
 
     
-    /** 
+    /** ajouter le texte de position de la meduse
      * @param position
      */
     void updatePosition(Text position){
@@ -67,7 +82,7 @@ public class Controller {
     }
 
     
-    /** 
+    /** ajouter le texte de vitesse de la meduse
      * @param speed
      */
     void updateSpeed(Text speed){
@@ -75,14 +90,14 @@ public class Controller {
     }
 
     
-    /** 
+    /** ajouter le texte d'acceleration de la meduse
      * @param acc
      */
     void updateAcc(Text acc){
         acc.setText( "v = "+ "("+(int)jeu.getMedusa().ax+", "+(-(int)jeu.getMedusa().ay)+")");
     }
     
-    /** 
+    /** ajouter le texte d'etat de la meduse
      * @param ground
      */
     void updateGround(Text ground){
@@ -97,6 +112,9 @@ public class Controller {
         ground.setText( "Touche au sol : "+ etat);
     }
 
+    /** permet de reset le jeu
+     *
+     */
     void resetJeu(){
         jeu.resetJeu();
     }
