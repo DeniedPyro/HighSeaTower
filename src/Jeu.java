@@ -18,6 +18,7 @@ public class Jeu {
     private double speedEffect = 0;
     private double bubbleTimeIntervalTrack = 0.0;
     private boolean lock = false;
+    private boolean debug = true;
     // Origine de la fenêtre☻
     public static double windowY = 0.0;
 
@@ -27,6 +28,14 @@ public class Jeu {
         }
 
         medusa = new Medusa(WIDTH/2-25, HEIGHT-50);
+    }
+
+    public boolean getDebug(){
+        return this.debug;
+    }
+
+    public void setDebug(boolean debug){
+        this.debug = debug;
     }
 
     public Medusa getMedusa() {
