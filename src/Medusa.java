@@ -135,9 +135,9 @@ public class Medusa extends Entity {
             context.fillRect(x, y, largeur, hauteur);
         }
 
-        else if(!Jeu.debug){
-            context.clearRect(x,y,largeur,hauteur);
-        }
+//        else if(!Jeu.debug){
+//            context.clearRect(x,y,largeur,hauteur);
+//        }
     }
 
 
@@ -150,6 +150,11 @@ public class Medusa extends Entity {
         double yAffiche = this.y - windowY;
 
         context.drawImage(image, x, yAffiche, largeur, hauteur);
+
+        if (Jeu.debug) {
+            context.setFill(Color.rgb(255, 0, 0, 0.4));
+            context.fillRect(x, yAffiche, largeur, hauteur);
+        }
 
     }
     /** Setter de moved
