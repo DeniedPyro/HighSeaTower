@@ -27,6 +27,7 @@ public class PlateformeSolide extends Platform{
         m.vy = 0 ;
     }
 
+    @Override
     public  void  cancelEffect(Jeu j, Medusa m){
         Color red = Color.rgb(184, 15, 36);
         if (!this.color.equals(red)){

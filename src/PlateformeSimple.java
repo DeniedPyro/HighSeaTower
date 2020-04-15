@@ -40,6 +40,7 @@ public class PlateformeSimple extends Platform {
             m.vy = 0;
         }
     }
+    @Override
     public  void  cancelEffect(Jeu j, Medusa m){
         Color orange = Color.rgb(230, 134, 58);
         if (!this.color.equals(orange)){
