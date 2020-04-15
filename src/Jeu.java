@@ -18,7 +18,7 @@ public class Jeu {
     private double speedEffect = 0;
     private double bubbleTimeIntervalTrack = 0.0;
     private boolean lock = false;
-    private boolean debug = false;
+    public static boolean debug = false;
     // Origine de la fenêtre☻
     public static double windowY = 0.0;
 

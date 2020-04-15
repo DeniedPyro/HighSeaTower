@@ -127,7 +127,17 @@ public class Medusa extends Entity {
      */
     @Override
     public void draw(GraphicsContext context) {
+
         context.drawImage(image, x, y, largeur, hauteur);
+
+        if (Jeu.debug){
+            context.setFill(Color.rgb(255,0,0,0.4));
+            context.fillRect(x, y, largeur, hauteur);
+        }
+
+        else if(!Jeu.debug){
+            context.clearRect(x,y,largeur,hauteur);
+        }
     }
 
 

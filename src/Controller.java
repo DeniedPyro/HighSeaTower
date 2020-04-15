@@ -101,5 +101,4 @@ public class Controller {
         jeu.resetJeu();
     }
 
-
 }
