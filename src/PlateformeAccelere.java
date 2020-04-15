@@ -15,6 +15,10 @@ public class PlateformeAccelere extends Platform {
         this.speedEffect = 0;
     }
 
+    private void resetColor(){
+        this.color = Color.rgb(230, 221, 58);
+    }
+
     @Override
     public void draw(GraphicsContext context) {
         context.setFill(color);
@@ -36,6 +40,11 @@ public class PlateformeAccelere extends Platform {
             this.color = Color.YELLOW;
         }
 
+        if(!j.getDebug()){
+            this.resetColor();
+        }
+
+
         if (m.getParterre()){
             m.vy = 0;
         }
@@ -50,7 +59,7 @@ public class PlateformeAccelere extends Platform {
     public void cancelEffect(Jeu jeu,Medusa m){
         Color yellow = Color.rgb(230, 221, 58) ;
         if(!this.color.equals(yellow)){
-            this.color = yellow ;
+            resetColor();
         }
 
         if (this.speedEffect != 0 && !m.getParterre()){

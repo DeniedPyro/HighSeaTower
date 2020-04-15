@@ -13,6 +13,10 @@ public class PlateformeRebond extends Platform {
         this.color = Color.LIGHTGREEN;
     }
 
+    private void resetColor(){
+        this.color = Color.LIGHTGREEN ;
+    }
+
     @Override
     public void draw(GraphicsContext context) {
         context.setFill(color);
@@ -27,11 +31,16 @@ public class PlateformeRebond extends Platform {
         context.fillRect(x, yAffiche, largeur, hauteur);
 
     }
+
     @Override
     public void giveEffect( Jeu j ,Medusa m){
 
         if(m.getParterre() && j.getDebug()){
             this.color = Color.YELLOW;
+        }
+
+        if(!j.getDebug()){
+            this.resetColor();
         }
 
         if(m.getParterre()){
@@ -49,7 +58,7 @@ public class PlateformeRebond extends Platform {
     @Override
     public void cancelEffect( Jeu j, Medusa m){
         if(!this.color.equals(color.LIGHTGREEN)){
-            this.color = Color.LIGHTGREEN;
+            this.resetColor();
         }
 
     }

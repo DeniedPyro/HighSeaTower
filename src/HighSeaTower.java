@@ -124,8 +124,19 @@ public class HighSeaTower extends Application {
                 }
                 controller.update(deltaTime);
                 controller.updateDistance(distance);
-                controller.draw(context);
 
+                if (controller.jeu.getDebug()){
+                    vbox.setVisible(true);
+                    controller.updatePosition(position);
+                    controller.updateSpeed(v);
+                    controller.updateAcc(a);
+                    controller.updateGround(ground);
+                }
+                else if (!controller.jeu.getDebug() && vbox.isVisible()){
+                    vbox.setVisible(false);
+                }
+
+                controller.draw(context);
                 lastTime = now;
             }
         };

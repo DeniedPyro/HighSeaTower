@@ -21,6 +21,11 @@ public class PlateformeSimple extends Platform {
         context.fillRect(x, y, largeur, hauteur);
     }
 
+    private void resetColor(){
+        Color orange = Color.rgb(230, 134, 58);
+        this.color = orange ;
+    }
+
     public void draw(GraphicsContext context,double windowY) {
 
         double yAffiche = this.y - Jeu.windowY;
@@ -36,6 +41,10 @@ public class PlateformeSimple extends Platform {
             this.color = Color.YELLOW;
         }
 
+        if(!j.getDebug()){
+            this.resetColor();
+        }
+
         if (m.getParterre()) {
             m.vy = 0;
         }
@@ -44,7 +53,7 @@ public class PlateformeSimple extends Platform {
     public  void  cancelEffect(Jeu j, Medusa m){
         Color orange = Color.rgb(230, 134, 58);
         if (!this.color.equals(orange)){
-            this.color = orange ;
+            this.resetColor();
         }
     }
 
