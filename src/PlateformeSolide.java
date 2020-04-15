@@ -26,7 +26,8 @@ public class PlateformeSolide extends Platform{
     }
 
     
-    /**
+    /** donner un effet a la meduse si elle est sur la plateforme:
+     * Arret de la meduse
      * @param j
      * @param m
      */

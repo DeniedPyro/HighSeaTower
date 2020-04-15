@@ -26,7 +26,8 @@ public class PlateformeRebond extends Platform {
         super.draw(context);
     }
 
-    /** 
+    /** donner un effet à la meduse si elle est sur la plateforme:
+     * donner une vitesse y à la meduse
      * @param j
      * @param m
      */
@@ -54,7 +55,7 @@ public class PlateformeRebond extends Platform {
     }
 
     
-    /** 
+    /** annuler les effets recus par la meduse au moment ou elle sort de la collision avec la plateforme
      * @param j
      * @param m
      */

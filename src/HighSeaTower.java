@@ -13,19 +13,17 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.application.Platform;
-import javafx.util.Duration;
 
 import java.io.File;
 
 public class HighSeaTower extends Application {
 
     public static final int WIDTH = 350, HEIGHT = 480;
-//    String path = "src/OST/Floaties-K4Z-Remix.mp3";
-//    Media media = new Media(new File(path).toURI().toString());
-//    private MediaPlayer mediaPlayer = new MediaPlayer(media);
+    String path = "src/OST/Floaties-K4Z-Remix.mp3";
+    Media media = new Media(new File(path).toURI().toString());
+    private MediaPlayer mediaPlayer = new MediaPlayer(media);
     /**
      * @param args the command line arguments
      */
@@ -153,8 +151,8 @@ public class HighSeaTower extends Application {
         primaryStage.setResizable(false);
         primaryStage.getIcons().add(new Image("/images/jellyfish1.png"));
 
-//        mediaPlayer.setVolume(0.1);
-//        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-//        mediaPlayer.play();
+        mediaPlayer.setVolume(0.04);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.play();
     }
 }

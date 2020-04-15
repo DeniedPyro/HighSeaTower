@@ -29,7 +29,8 @@ public class PlateformeSimple extends Platform {
     }
 
     
-    /** 
+    /** donner un effet a la meduse si elle est sur la plateforme:
+     * Arreter la meduse
      * @param j
      * @param m
      */
@@ -49,7 +50,7 @@ public class PlateformeSimple extends Platform {
         }
     }
     
-    /** 
+    /** annuler les effets recus par la meduse au moment ou elle sort de la collision avec la plateforme
      * @param j
      * @param m
      */
