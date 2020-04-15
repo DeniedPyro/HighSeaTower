@@ -27,7 +27,7 @@ public class PlateformeAccelere extends Platform {
         super.draw(context);
     }
 
-    /** donner un effet à la meduse si elle est sur la plateforme:
+    /** donner un effet a la meduse si elle est sur la plateforme:
      * multiplier la vitesse de l'ecran par 3
      * @param j
      * @param m

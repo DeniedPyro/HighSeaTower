@@ -32,14 +32,7 @@ public class Jeu {
 
 
 
-    /**
-     * @return Medusa
-     */
-    public Medusa getMedusa() {
-        return medusa;
-    }
-
-    /**
+    /**Genere un nombre entre min et max
      * @param min
      * @param max
      * @return int
@@ -49,7 +42,7 @@ public class Jeu {
     }
 
 
-    /**
+    /**Ajoute une groupe de bulle a la liste
      * @param b
      */
     private void addBubbleGroup(ArrayList<Bubble> b) {
@@ -103,6 +96,13 @@ public class Jeu {
             }
         }
         return this.generatePlatform(y);
+    }
+
+    /**retourne la meduse
+     * @return Medusa
+     */
+    public Medusa getMedusa() {
+        return medusa;
     }
 
     /**retourne la valeur du debug
@@ -173,13 +173,15 @@ public class Jeu {
      */
     public void update(double dt) {
 
+        /**
+         *Cree les bulles a chaque 3 secondes
+         */
         this.bubbleTimeIntervalTrack += dt;
-
         if (this.bubbleTimeIntervalTrack > 3.0 && this.bubbles.isEmpty()) {
             for (int i = 0; i < 3; i++) {
                 addBubbleGroup(bubbles);
             }
-            this.bubbleTimeIntervalTrack -= 3;
+            this.bubbleTimeIntervalTrack -= 0;
         }
 
         if (!this.bubbles.isEmpty()) {
@@ -279,6 +281,5 @@ public class Jeu {
         screenAy = 2;
         screenVy = 50;
         windowY = 0.0;
-
     }
 }

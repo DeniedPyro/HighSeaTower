@@ -13,7 +13,7 @@ public class Bubble extends Entity{
     }
 
     /**
-     * Met à jour la position et la vitesse de la balle
+     * Met a jour la position et la vitesse de la balle
      *
      * @param dt Temps écoulé depuis le dernier update() en secondes
      */
@@ -22,12 +22,18 @@ public class Bubble extends Entity{
         super.update(dt);
     }
 
-    /** Permet d'afficher la bulle
-     * @param context
-     */
     @Override
     public void draw(GraphicsContext context) {
-        double yAffiche = this.y - Jeu.windowY;
+        ;
+    }
+
+    
+    /** Permet dafficher la bulle
+     * @param context
+     * @param windowY
+     */
+    public void draw(GraphicsContext context, double windowY) {
+        double yAffiche = this.y - windowY;
         context.setFill(Color.rgb(0, 0, 255, 0.4));
         context.fillOval(this.getX(),yAffiche,
         this.getW(), this.getH());

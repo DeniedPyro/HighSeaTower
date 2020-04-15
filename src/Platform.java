@@ -14,7 +14,7 @@ class Platform extends Entity {
         context.fillRect(x, yAffiche, largeur, hauteur);
     }
 
-    /** 
+    /** Donne une effet a la meduse
      * @param j
      * @param m
      */
@@ -23,7 +23,7 @@ class Platform extends Entity {
     }
 
     
-    /** 
+    /**Enleve leffet a la meduse
      * @param j
      * @param m
      */
