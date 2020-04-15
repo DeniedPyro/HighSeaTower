@@ -47,15 +47,15 @@ public class Controller {
     }
 
     void updatePosition(Text position){
-        position.setText( "Position = "+ "("+jeu.getMedusa().x+", "+jeu.getMedusa().y+")");
+        position.setText( "Position = "+ "("+(int)jeu.getMedusa().x+", "+(int)jeu.getMedusa().y+")");
     }
 
     void updateSpeed(Text speed){
-        speed.setText( "v = "+ "("+jeu.getMedusa().vx+", "+jeu.getMedusa().vy+")");
+        speed.setText( "v = "+ "("+(int)jeu.getMedusa().vx+", "+(int)jeu.getMedusa().vy+")");
     }
 
     void updateAcc(Text acc){
-        acc.setText( "v = "+ "("+jeu.getMedusa().ax+", "+jeu.getMedusa().ay+")");
+        acc.setText( "v = "+ "("+(int)jeu.getMedusa().ax+", "+(int)jeu.getMedusa().ay+")");
     }
     void updateGround(Text ground){
         String etat = "";
