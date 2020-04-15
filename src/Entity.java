@@ -13,7 +13,7 @@ public abstract class Entity {
     protected Color color;
 
     /**
-     * Met à jour la position et la vitesse de la balle
+     * Met a jour la position et la vitesse de la balle
      *
      * @param dt Temps écoulé depuis le dernier update() en secondes
      */

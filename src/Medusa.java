@@ -45,7 +45,7 @@ public class Medusa extends Entity {
 
 
 
-    /** Permet de mettre à jour la position,vitesse et acceleration de la meduse
+    /** Permet de mettre a jour la position,vitesse et acceleration de la meduse
      * Permet aussi de choisir l'image de la meduse par rapport
      * à un framerate et au temps
      * @param dt
