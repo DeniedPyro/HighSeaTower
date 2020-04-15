@@ -42,6 +42,7 @@ public class PlateformeRebond extends Platform {
             else {
                 m.vy = -v;
             }
+            m.setParterre(false);
         }
     }
 
