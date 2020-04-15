@@ -46,6 +46,29 @@ public class Controller {
         distance.setText((int)Math.abs(Jeu.windowY )+ "m");
     }
 
+    void updatePosition(Text position){
+        position.setText( "Position = "+ "("+jeu.getMedusa().x+", "+jeu.getMedusa().y+")");
+    }
+
+    void updateSpeed(Text speed){
+        speed.setText( "v = "+ "("+jeu.getMedusa().vx+", "+jeu.getMedusa().vy+")");
+    }
+
+    void updateAcc(Text acc){
+        acc.setText( "v = "+ "("+jeu.getMedusa().ax+", "+jeu.getMedusa().ay+")");
+    }
+    void updateGround(Text ground){
+        String etat = "";
+
+        if (jeu.getMedusa().getParterre() == true){
+            etat="oui";
+        }
+        else {
+            etat = "non";
+        }
+        ground.setText( "Touche au sol : "+ etat);
+    }
+
     void resetJeu(){
         jeu.resetJeu();
     }
