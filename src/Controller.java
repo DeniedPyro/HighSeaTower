@@ -78,7 +78,7 @@ public class Controller {
      * @param position
      */
     void updatePosition(Text position){
-        position.setText( "Position = "+ "("+(int)jeu.getMedusa().x+", "+((int)(jeu.getMedusa().y-Jeu.windowY))+")");
+        position.setText( "Position = "+ "("+(int)jeu.getMedusa().x+", "+((int)(-jeu.getMedusa().y+Jeu.windowY)+Jeu.HEIGHT)+")");
     }
 
     
