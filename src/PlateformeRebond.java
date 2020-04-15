@@ -17,12 +17,21 @@ public class PlateformeRebond extends Platform {
         this.color = Color.LIGHTGREEN ;
     }
 
+    
+    /** 
+     * @param context
+     */
     @Override
     public void draw(GraphicsContext context) {
         context.setFill(color);
         context.fillRect(x, y, largeur, hauteur);
     }
 
+    
+    /** 
+     * @param context
+     * @param windowY
+     */
     public void draw(GraphicsContext context,double windowY) {
 
         double yAffiche = this.y - Jeu.windowY;
@@ -32,6 +41,11 @@ public class PlateformeRebond extends Platform {
 
     }
 
+    
+    /** 
+     * @param j
+     * @param m
+     */
     @Override
     public void giveEffect( Jeu j ,Medusa m){
 
@@ -55,6 +69,11 @@ public class PlateformeRebond extends Platform {
         }
     }
 
+    
+    /** 
+     * @param j
+     * @param m
+     */
     @Override
     public void cancelEffect( Jeu j, Medusa m){
         if(!this.color.equals(color.LIGHTGREEN)){

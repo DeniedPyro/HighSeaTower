@@ -16,12 +16,21 @@ public class PlateformeSolide extends Platform{
         this.color = Color.rgb(184, 15, 36); ;
     }
 
+    
+    /** 
+     * @param context
+     */
     @Override
     public void draw(GraphicsContext context) {
         context.setFill(color);
         context.fillRect(x, y, largeur, hauteur);
     }
 
+    
+    /** 
+     * @param j
+     * @param m
+     */
     @Override
     public void giveEffect(Jeu j , Medusa m){
         if(m.getParterre() && j.getDebug()){
@@ -34,6 +43,11 @@ public class PlateformeSolide extends Platform{
 
     }
 
+    
+    /** 
+     * @param j
+     * @param m
+     */
     @Override
     public  void  cancelEffect(Jeu j, Medusa m){
         Color red = Color.rgb(184, 15, 36);

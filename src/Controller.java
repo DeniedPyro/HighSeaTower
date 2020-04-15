@@ -11,10 +11,18 @@ public class Controller {
         jeu = new Jeu();
     }
 
+    
+    /** 
+     * @param context
+     */
     void draw(GraphicsContext context) {
         jeu.draw(context);
     }
 
+    
+    /** 
+     * @param deltaTime
+     */
     void update(double deltaTime) {
         jeu.update(deltaTime);
         if(!jeu.getMedusa().isAlive){
@@ -42,21 +50,41 @@ public class Controller {
         jeu.setDebug(!jeu.getDebug());
     }
 
+    
+    /** 
+     * @param distance
+     */
     void updateDistance(Text distance){
         distance.setText((int)Math.abs(Jeu.windowY )+ "m");
     }
 
+    
+    /** 
+     * @param position
+     */
     void updatePosition(Text position){
-        position.setText( "Position = "+ "("+(int)jeu.getMedusa().x+", "+(int)jeu.getMedusa().y+")");
+        position.setText( "Position = "+ "("+(int)jeu.getMedusa().x+", "+((int)(jeu.getMedusa().y-Jeu.windowY))+")");
     }
 
+    
+    /** 
+     * @param speed
+     */
     void updateSpeed(Text speed){
-        speed.setText( "v = "+ "("+(int)jeu.getMedusa().vx+", "+(int)jeu.getMedusa().vy+")");
+        speed.setText( "v = "+ "("+(int)jeu.getMedusa().vx+", "+(-(int)jeu.getMedusa().vy+")"));
     }
 
+    
+    /** 
+     * @param acc
+     */
     void updateAcc(Text acc){
-        acc.setText( "v = "+ "("+(int)jeu.getMedusa().ax+", "+(int)jeu.getMedusa().ay+")");
+        acc.setText( "v = "+ "("+(int)jeu.getMedusa().ax+", "+(-(int)jeu.getMedusa().ay)+")");
     }
+    
+    /** 
+     * @param ground
+     */
     void updateGround(Text ground){
         String etat = "";
 

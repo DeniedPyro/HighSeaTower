@@ -89,6 +89,11 @@ public class Bubble extends Entity{
         ;
     }
 
+    
+    /** 
+     * @param context
+     * @param windowY
+     */
     public void draw(GraphicsContext context, double windowY) {
         double yAffiche = this.y - windowY;
         context.setFill(Color.rgb(0, 0, 255, 0.4));
@@ -98,18 +103,34 @@ public class Bubble extends Entity{
 }
 
 
+    
+    /** 
+     * @return double
+     */
     public double getX() {
         return x;
     }
 
+    
+    /** 
+     * @return double
+     */
     public double getY() {
         return y;
     }
 
+    
+    /** 
+     * @return double
+     */
     public double getW() {
         return 2 * r;
     }
 
+    
+    /** 
+     * @return double
+     */
     public double getH() {
         return 2 * r;
     }

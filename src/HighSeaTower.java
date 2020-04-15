@@ -33,6 +33,11 @@ public class HighSeaTower extends Application {
         launch(args);
     }
 
+    
+    /** 
+     * @param primaryStage
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
 

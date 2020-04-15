@@ -19,12 +19,21 @@ public class PlateformeAccelere extends Platform {
         this.color = Color.rgb(230, 221, 58);
     }
 
+    
+    /** 
+     * @param context
+     */
     @Override
     public void draw(GraphicsContext context) {
         context.setFill(color);
         context.fillRect(x, y, largeur, hauteur);
     }
 
+    
+    /** 
+     * @param context
+     * @param windowY
+     */
     public void draw(GraphicsContext context,double windowY) {
 
         double yAffiche = this.y - Jeu.windowY;
@@ -33,6 +42,11 @@ public class PlateformeAccelere extends Platform {
         context.fillRect(x, yAffiche, largeur, hauteur);
     }
 
+    
+    /** 
+     * @param j
+     * @param m
+     */
     @Override
     public void giveEffect(Jeu j,Medusa m){
 
@@ -55,6 +69,11 @@ public class PlateformeAccelere extends Platform {
         }
     }
 
+    
+    /** 
+     * @param jeu
+     * @param m
+     */
     @Override
     public void cancelEffect(Jeu jeu,Medusa m){
         Color yellow = Color.rgb(230, 221, 58) ;

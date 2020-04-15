@@ -15,6 +15,10 @@ public class PlateformeSimple extends Platform {
         this.color = Color.rgb(230, 134, 58);
     }
 
+    
+    /** 
+     * @param context
+     */
     @Override
     public void draw(GraphicsContext context) {
         context.setFill(color);
@@ -26,6 +30,11 @@ public class PlateformeSimple extends Platform {
         this.color = orange ;
     }
 
+    
+    /** 
+     * @param context
+     * @param windowY
+     */
     public void draw(GraphicsContext context,double windowY) {
 
         double yAffiche = this.y - Jeu.windowY;
@@ -34,6 +43,11 @@ public class PlateformeSimple extends Platform {
         context.fillRect(x, yAffiche, largeur, hauteur);
     }
 
+    
+    /** 
+     * @param j
+     * @param m
+     */
     @Override
     public void giveEffect(Jeu j , Medusa m){
 
@@ -49,6 +63,11 @@ public class PlateformeSimple extends Platform {
             m.vy = 0;
         }
     }
+    
+    /** 
+     * @param j
+     * @param m
+     */
     @Override
     public  void  cancelEffect(Jeu j, Medusa m){
         Color orange = Color.rgb(230, 134, 58);

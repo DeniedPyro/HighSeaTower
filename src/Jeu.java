@@ -30,21 +30,43 @@ public class Jeu {
         medusa = new Medusa(WIDTH/2-25, HEIGHT-50);
     }
 
+    
+    /** 
+     * @return boolean
+     */
     public boolean getDebug(){
         return this.debug;
     }
 
+    
+    /** 
+     * @param debug
+     */
     public void setDebug(boolean debug){
         this.debug = debug;
     }
 
+    
+    /** 
+     * @return Medusa
+     */
     public Medusa getMedusa() {
         return medusa;
     }
+    
+    /** 
+     * @param min
+     * @param max
+     * @return int
+     */
     private int generateNumBetween(int min, int max) {
         return R.nextInt((max - min) + 1) + min;
     }
 
+    
+    /** 
+     * @param b
+     */
     private void addBubbleGroup(ArrayList<Bubble> b) {
         Bubble[] balles = new Bubble[5];
         int basex = generateNumBetween(0, WIDTH);
@@ -57,10 +79,19 @@ public class Jeu {
         }
     }
 
+        
+        /** 
+         * @return boolean
+         */
         private boolean isMedusaUp75(){
         return (medusa.y < HEIGHT * 0.25 + this.windowY);
     }
 
+    
+    /** 
+     * @param y
+     * @return Platform
+     */
     private Platform generatePlatform(int y){
         int width = R.nextInt(96) + 80;
         int x = R.nextInt(WIDTH - width + 1);
@@ -101,18 +132,34 @@ public class Jeu {
         medusa.jump();
     }
 
+    
+    /** 
+     * @return double
+     */
     public double getScreenVy(){
         return this.screenVy;
     }
 
+    
+    /** 
+     * @param vy
+     */
     public void setScreenVy(double vy){
         this.screenVy =vy;
     }
 
+    
+    /** 
+     * @return double
+     */
     public double getScreenAy(){
         return this.screenAy;
     }
 
+    
+    /** 
+     * @param ay
+     */
     public void setScreenAy(double ay){
         this.screenAy =ay;
     }
@@ -130,6 +177,10 @@ public class Jeu {
         medusa.stop();
     }
 
+    
+    /** 
+     * @param dt
+     */
     public void update(double dt) {
 
         this.bubbleTimeIntervalTrack +=dt;
@@ -200,6 +251,10 @@ public class Jeu {
         }
     }
 
+    
+    /** 
+     * @param context
+     */
     public void draw(GraphicsContext context) {
         context.setFill(Color.DARKBLUE);
         context.fillRect(0, 0, WIDTH, HEIGHT);
