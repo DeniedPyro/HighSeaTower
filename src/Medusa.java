@@ -6,7 +6,7 @@ import java.awt.*;
 public class Medusa extends Entity {
     private Image[][] frames;
     private Image image;
-    private double frameRate = 8; // 8 frame par sec
+    private double frameRate = 8; // 8 frames par sec
     private double tempsTotal = 0;
     public boolean isAlive = true;
     private boolean parterre;
@@ -42,18 +42,14 @@ public class Medusa extends Entity {
         image = frames[0][0];
     }
 
-    public void setMoved(boolean moved) {
-        this.moved = moved;
-    }
 
-    public boolean getParterre() {
-        return this.parterre;
-    }
 
-    public boolean hasMoved(){
-        return this.moved;
-    }
 
+    /** Permet de mettre à jour la position,vitesse et acceleration de la meduse
+     * Permet aussi de choisir l'image de la meduse par rapport
+     * à un framerate et au temps
+     * @param dt
+     */
     @Override
     public void update(double dt) {
         // Physique du personnage
@@ -70,18 +66,21 @@ public class Medusa extends Entity {
         }
     }
 
+
+    /**
+     * La collision avec une plateforme a lieu seulement si :
+     *
+     * - Il y a une intersection entre la plateforme et le personnage
+     *
+     * - La collision a lieu entre la plateforme et le *bas du personnage*
+     * seulement
+     *
+     * - La vitesse va vers le bas (le personnage est en train de tomber,
+     * pas en train de sauter)
+     * @param other
+     * @return boolean
+     */
     public boolean collides(Platform other) {
-        /**
-         * La collision avec une plateforme a lieu seulement si :
-         *
-         * - Il y a une intersection entre la plateforme et le personnage
-         *
-         * - La collision a lieu entre la plateforme et le *bas du personnage*
-         * seulement
-         *
-         * - La vitesse va vers le bas (le personnage est en train de tomber,
-         * pas en train de sauter)
-         */
 
         if (intersects(other) && Math.abs(this.y + hauteur - other.y) > 10 && this.vy < 0){
             return true;
@@ -99,18 +98,23 @@ public class Medusa extends Entity {
 
     }
 
+
+    /** Regarde si le carré représentant meduse intersecte
+     * une plateforme
+     * @param other
+     * @return boolean
+     */
     public boolean intersects(Platform other) {
         return !( // Un des carrés est à gauche de l’autre
-            x + largeur < other.x
-            || other.x + other.largeur < this.x
-            // Un des carrés est en haut de l’autre
-            || y + hauteur < other.y
-            || other.y + other.hauteur < this.y
+                x + largeur < other.x
+                        || other.x + other.largeur < this.x
+                        // Un des carrés est en haut de l’autre
+                        || y + hauteur < other.y
+                        || other.y + other.hauteur < this.y
         );
     }
 
-    /**
-     * Repousse le personnage vers le haut (sans déplacer la
+    /** Repousse le personnage vers le haut (sans déplacer la
      * plateforme)
      */
     public void pushOut(Platform other) {
@@ -118,19 +122,68 @@ public class Medusa extends Entity {
         this.y -= deltaY;
     }
 
+    /** Permet de dessiner la meduse à la position initiale
+     * @param context
+     */
+    @Override
+    public void draw(GraphicsContext context) {
+        context.drawImage(image, x, y, largeur, hauteur);
+    }
+
+
+    /** Permet de dessiner la meduse à une position variable Y
+     * @param context
+     * @param windowY
+     */
+    public void draw(GraphicsContext context,double windowY) {
+
+        double yAffiche = this.y - windowY;
+
+        context.drawImage(image, x, yAffiche, largeur, hauteur);
+
+    }
+    /** Setter de moved
+     * @param moved
+     */
+    public void setMoved(boolean moved) {
+        this.moved = moved;
+    }
+
+    /** Getter de moved
+     * @return boolean
+     */
+    public boolean hasMoved(){
+        return this.moved;
+    }
+
+    /** Setter de parterre
+     * @param parterre
+     */
     public void setParterre(boolean parterre) {
         this.parterre = parterre;
     }
 
+    /** Getter de parterre
+     * @return boolean
+     */
+    public boolean getParterre() {
+        return this.parterre;
+    }
+
+
+    /** Permet de setter la direction de la meduse à gauche
+     *
+     */
     public void lookingLeft(){
         this.direction = false;
     }
-
+    /** Permet de setter la direction de la meduse à droite
+     *
+     */
     public void lookingRight(){
         this.direction = true;
     }
-    /**
-     * Le personnage peut seulement sauter s'il se trouve sur une
+    /** La meduse peut seulement sauter si elle se trouve sur une
      * plateforme
      */
     public void jump() {
@@ -142,7 +195,9 @@ public class Medusa extends Entity {
             setParterre(false);
         }
     }
-
+    /** Permet a la meduse de bouger à gauche
+     *
+     */
     public void moveLeft(){
         if (!this.moved){
             setMoved(true);
@@ -150,7 +205,9 @@ public class Medusa extends Entity {
         this.ax = -1200;
         lookingLeft();
     }
-
+    /** Permet a la meduse de bouger à droite
+     *
+     */
     public void moveRight(){
         if (!moved){
             setMoved(true);
@@ -158,22 +215,11 @@ public class Medusa extends Entity {
         this.ax = 1200;
         lookingRight();
     }
-
+    /** Arrete le mouvement de la meduse
+     *
+     */
     public void stop(){
         this.vx = 0;
         this.ax = 0;
     }
-
-    @Override
-    public void draw(GraphicsContext context) {
-        context.drawImage(image, x, y, largeur, hauteur);
-    }
-
-    public void draw(GraphicsContext context,double windowY) {
-
-        double yAffiche = this.y - windowY;
-
-        context.drawImage(image, x, yAffiche, largeur, hauteur);
-
-    }
-}
+} 
