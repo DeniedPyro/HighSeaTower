@@ -94,7 +94,7 @@ public class Controller {
      * @param acc
      */
     void updateAcc(Text acc){
-        acc.setText( "v = "+ "("+(int)jeu.getMedusa().ax+", "+(-(int)jeu.getMedusa().ay)+")");
+        acc.setText( "a = "+ "("+(int)jeu.getMedusa().ax+", "+(-(int)jeu.getMedusa().ay)+")");
     }
     
     /** ajouter le texte d'etat de la meduse

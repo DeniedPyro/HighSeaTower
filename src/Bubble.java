@@ -22,18 +22,12 @@ public class Bubble extends Entity{
         super.update(dt);
     }
 
-    @Override
-    public void draw(GraphicsContext context) {
-        ;
-    }
-
-    
     /** Permet dafficher la bulle
      * @param context
-     * @param windowY
      */
-    public void draw(GraphicsContext context, double windowY) {
-        double yAffiche = this.y - windowY;
+    @Override
+    public void draw(GraphicsContext context) {
+        double yAffiche = this.y - Jeu.windowY;
         context.setFill(Color.rgb(0, 0, 255, 0.4));
         context.fillOval(this.getX(),yAffiche,
         this.getW(), this.getH());
